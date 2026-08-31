@@ -1,0 +1,401 @@
+#!/usr/bin/env python3
+"""
+Assembles the TKB Ventures static site.
+
+The output is plain HTML with no runtime build step — this script exists only
+so the header, footer and modals live in one place while we iterate. Run:
+
+    python3 build.py
+
+Every page is written to the project root.
+"""
+
+import pathlib
+
+ROOT = pathlib.Path(__file__).parent
+
+PHONE_DISPLAY = "(770) 000-0000"      # PLACEHOLDER
+PHONE_HREF = "+17700000000"           # PLACEHOLDER
+EMAIL = "info@tkbventures.com"        # PLACEHOLDER
+ADDRESS_1 = "6190 Regency Parkway, Suite 300"
+ADDRESS_2 = "Norcross, GA 30071"
+
+TODO = """<!--
+  ============================================================
+  PLACEHOLDERS TO REPLACE BEFORE LAUNCH
+  ------------------------------------------------------------
+  1. Phone: (770) 000-0000  -> real line (search all files)
+  2. Email: info@tkbventures.com -> real inbox
+  3. Social URLs in the footer are set to "#"
+  4. Form endpoints: set data-endpoint on each <form>
+  5. ZIP coverage list: assets/js/main.js -> SERVICE_PREFIXES
+  6. Photography: hero uses a schematic. Add a photo with
+     .hero { --hero-photo: url("assets/img/your-photo.jpg"); }
+  7. Team photos and the three unnamed leadership cards
+  8. Service + FAQ copy is drafted from the project brief, not
+     pulled from janiking.com. Have Jani-King approve wording
+     and confirm logo / PGA co-branding usage rights.
+  ============================================================
+-->"""
+
+# --- shared bits -----------------------------------------------------------
+
+BRAND_MARK = """<svg class="brand__mark" width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+        <rect x="0.9" y="0.9" width="32.2" height="32.2" rx="8.5" stroke="currentColor" stroke-width="1.8" opacity=".55"/>
+        <path d="M8 22.5C11.6 13.8 17.4 9.5 26 9.5" stroke="#a8c9f0" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M8 26C12.8 19.4 18.4 16 26 16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity=".6"/>
+      </svg>"""
+
+# Facility floor-plan schematic behind the navy heroes. The thing we sell is
+# the site walk-through, so the hero shows a plan rather than a stock photo.
+PLAN_SVG = """<svg class="{cls}" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <g stroke="#a8c9f0" fill="none" stroke-linecap="square">
+        <!-- building envelope -->
+        <rect x="60" y="90" width="1320" height="440" stroke-width="3" opacity=".5"/>
+        <!-- corridor -->
+        <path d="M60 292h1320M60 348h1320" stroke-width="2" opacity=".42"/>
+        <!-- rooms above the corridor -->
+        <path d="M300 90v202M520 90v202M700 90v202M980 90v202M1180 90v202" stroke-width="1.6" opacity=".34"/>
+        <!-- rooms below the corridor -->
+        <path d="M380 348v182M640 348v182M900 348v182M1150 348v182" stroke-width="1.6" opacity=".34"/>
+        <!-- door swings off the corridor -->
+        <g class="plan-detail" stroke-width="1.4" opacity=".3">
+          <path d="M170 292v-44M170 248a44 44 0 0 0 44 44"/>
+          <path d="M406 292v-44M406 248a44 44 0 0 0 44 44"/>
+          <path d="M812 292v-44M812 248a44 44 0 0 0 44 44"/>
+          <path d="M1256 292v-44M1256 248a44 44 0 0 0 44 44"/>
+          <path d="M232 348v44M232 392a44 44 0 0 1 44-44"/>
+          <path d="M744 348v44M744 392a44 44 0 0 1 44-44"/>
+          <path d="M1010 348v44M1010 392a44 44 0 0 1 44-44"/>
+        </g>
+        <!-- stair core -->
+        <g class="plan-detail" stroke-width="1.2" opacity=".3">
+          <path d="M1214 384h116M1214 410h116M1214 436h116M1214 462h116M1214 488h116"/>
+        </g>
+        <!-- dimension line -->
+        <g class="plan-detail" stroke-width="1.2" opacity=".22">
+          <path d="M60 52h1320M60 40v24M1380 40v24M700 40v24"/>
+        </g>
+      </g>
+      <g fill="#a8c9f0" opacity=".38">
+        <circle cx="60" cy="90" r="4"/><circle cx="1380" cy="90" r="4"/>
+        <circle cx="60" cy="530" r="4"/><circle cx="1380" cy="530" r="4"/>
+      </g>
+    </svg>"""
+
+NAV_ITEMS = [
+    ("about.html", "About"),
+    ("services.html", "Services"),
+    ("service-areas.html", "Service areas"),
+    ("faq.html", "FAQ"),
+    ("contact.html", "Contact"),
+]
+
+
+def header(current: str, solid: bool) -> str:
+    links = "\n".join(
+        '          <li><a class="nav__link" href="{href}"{cur}>{label}</a></li>'.format(
+            href=href, label=label,
+            cur=' aria-current="page"' if href == current else "",
+        )
+        for href, label in NAV_ITEMS
+    )
+    cls = "site-header site-header--solid" if solid else "site-header"
+    return f"""  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="{cls}">
+    <div class="wrap wrap--wide header-inner">
+      <a class="brand" href="index.html">
+        {BRAND_MARK}
+        <span class="brand__name">TKB Ventures
+          <span class="brand__sub">Jani-King of Atlanta</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+        <span class="visually-hidden">Menu</span>
+        <svg class="nav-toggle__open" width="18" height="12" viewBox="0 0 18 12" aria-hidden="true">
+          <path d="M0 1h18M0 6h18M0 11h18" stroke="currentColor" stroke-width="1.8"/>
+        </svg>
+        <svg class="nav-toggle__close" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+          <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.8"/>
+        </svg>
+      </button>
+
+      <nav class="nav" id="site-nav" data-nav aria-label="Main">
+        <ul class="nav__list">
+{links}
+        </ul>
+        <a class="btn btn--light" href="#" data-open-modal="modal-walkthrough">Request walk-through</a>
+      </nav>
+    </div>
+  </header>
+  <div class="nav-scrim" data-nav-scrim></div>"""
+
+
+def page_hero(title: str, intro: str, crumb: str) -> str:
+    return f"""  <section class="page-hero">
+    {PLAN_SVG.format(cls="page-hero__plan")}
+    <div class="wrap">
+      <p class="breadcrumb"><a href="index.html">Home</a> / {crumb}</p>
+      <h1>{title}</h1>
+      <p>{intro}</p>
+    </div>
+  </section>"""
+
+
+CTA_BAND = f"""  <section class="cta-band">
+    <div class="wrap cta-band__inner">
+      <div>
+        <h2>Book a walk-through of your facility</h2>
+        <p>We'll measure the space, look at your floor types and traffic patterns, and come back
+          with a written scope and price. No charge, no obligation.</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn--light" href="#" data-open-modal="modal-walkthrough">Request walk-through</a>
+        <a class="btn btn--ghost-light" href="tel:{PHONE_HREF}">Call {PHONE_DISPLAY}</a>
+      </div>
+    </div>
+  </section>"""
+
+
+FOOTER = f"""  <footer class="site-footer">
+    <div class="wrap wrap--wide">
+      <div class="footer-grid">
+
+        <div class="footer-col">
+          <a class="brand footer-brand" href="index.html">
+            {BRAND_MARK}
+            <span class="brand__name">TKB Ventures
+              <span class="brand__sub">Jani-King of Atlanta</span>
+            </span>
+          </a>
+          <address>
+            {ADDRESS_1}<br>
+            {ADDRESS_2}<br>
+            <a href="tel:{PHONE_HREF}">{PHONE_DISPLAY}</a><br>
+            <a href="mailto:{EMAIL}">{EMAIL}</a>
+          </address>
+          <div class="social">
+            <!-- TODO: replace # with real profile URLs -->
+            <a href="#" aria-label="TKB Ventures on LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3.2 5.4H.9V15h2.3V5.4ZM2 1a1.4 1.4 0 1 0 0 2.8A1.4 1.4 0 0 0 2 1Zm4.9 4.4H4.7V15H7V9.9c0-1.4.3-2.7 2-2.7s1.7 1.6 1.7 2.8V15H13V9.5c0-2.6-.6-4.4-3.5-4.4a3 3 0 0 0-2.7 1.5V5.4Z"/></svg>
+            </a>
+            <a href="#" aria-label="TKB Ventures on Facebook">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M9.6 15V8.6h2.2l.3-2.5H9.6V4.5c0-.7.2-1.2 1.2-1.2h1.3V1.1A17 17 0 0 0 10.2 1C8.4 1 7.2 2.1 7.2 4.2v1.9H5v2.5h2.2V15h2.4Z"/></svg>
+            </a>
+            <a href="#" aria-label="TKB Ventures on Instagram">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.4c2.1 0 2.4 0 3.3.1.8 0 1.2.2 1.5.3.4.1.6.3.9.6.3.3.5.5.6.9.1.3.3.7.3 1.5 0 .9.1 1.2.1 3.2s0 2.4-.1 3.3c0 .8-.2 1.2-.3 1.5-.1.4-.3.6-.6.9-.3.3-.5.5-.9.6-.3.1-.7.3-1.5.3-.9 0-1.2.1-3.3.1s-2.4 0-3.3-.1c-.8 0-1.2-.2-1.5-.3-.4-.1-.6-.3-.9-.6a2.4 2.4 0 0 1-.6-.9c-.1-.3-.3-.7-.3-1.5 0-.9-.1-1.2-.1-3.3s0-2.3.1-3.2c0-.8.2-1.2.3-1.5.1-.4.3-.6.6-.9.3-.3.5-.5.9-.6.3-.1.7-.3 1.5-.3.9 0 1.2-.1 3.3-.1Zm0 4a2.6 2.6 0 1 0 0 5.2 2.6 2.6 0 0 0 0-5.2Zm0 4.3a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4Zm3.3-4.4a.6.6 0 1 1-1.2 0 .6.6 0 0 1 1.2 0Z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>About TKB Ventures</h3>
+          <p>TKB Ventures is an authorized Jani-King franchise operator delivering commercial
+            janitorial and facility maintenance across Greater Georgia.</p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="services.html#commercial">Janitorial services</a></li>
+            <li><a href="services.html#commercial">Office cleaning</a></li>
+            <li><a href="services.html#specialty">Disinfecting</a></li>
+            <li><a href="services.html#specialty">Green cleaning</a></li>
+            <li><a href="services.html#specialty">Specialty cleaning</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="service-areas.html">Service areas</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="terms.html">Terms of service</a></li>
+            <li><a href="privacy.html">Privacy policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pga-strip">
+        <span class="logo-plate">
+          <img src="assets/img/pga-of-america-logo.png" alt="PGA of America" width="200" height="60" loading="lazy">
+        </span>
+        <p>Official Cleaning Company of the PGA of America</p>
+      </div>
+
+      <div class="footer-legal">
+        <p>&copy; <span data-year>2026</span> TKB Ventures, LLC. Jani-King of Atlanta is independently
+          owned and operated by TKB Ventures.</p>
+        <p>Jani-King&reg; and the PGA of America marks are the property of their respective owners.</p>
+      </div>
+    </div>
+  </footer>"""
+
+
+MODALS = f"""  <!-- ===================== Modals ===================== -->
+  <dialog class="modal" id="modal-walkthrough" aria-labelledby="modal-walkthrough-title">
+    <div class="modal__head">
+      <div>
+        <h2 id="modal-walkthrough-title">Request a walk-through</h2>
+        <p>Tell us where the building is and we'll set a time to look at it.</p>
+      </div>
+      <button class="modal__close" type="button" data-close-modal aria-label="Close">&times;</button>
+    </div>
+    <div class="modal__body">
+      <form data-form="walkthrough" novalidate>
+        <div class="form-status" data-form-status role="status"></div>
+        <div class="field-row">
+          <div class="field">
+            <label for="wt-name">Your name</label>
+            <input id="wt-name" name="name" type="text" autocomplete="name" required>
+            <span class="field__error"></span>
+          </div>
+          <div class="field">
+            <label for="wt-business">Business name</label>
+            <input id="wt-business" name="business" type="text" autocomplete="organization" required>
+            <span class="field__error"></span>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="wt-phone">Phone</label>
+            <input id="wt-phone" name="phone" type="tel" autocomplete="tel" required>
+            <span class="field__error"></span>
+          </div>
+          <div class="field">
+            <label for="wt-email">Email</label>
+            <input id="wt-email" name="email" type="email" autocomplete="email" required>
+            <span class="field__error"></span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="wt-address">Facility address <span class="hint">— street and city</span></label>
+          <input id="wt-address" name="address" type="text" autocomplete="street-address" required>
+          <span class="field__error"></span>
+        </div>
+        <div class="field">
+          <label for="wt-notes">Anything we should know? <span class="hint">— optional</span></label>
+          <textarea id="wt-notes" name="notes" rows="3"></textarea>
+        </div>
+        <button class="btn btn--primary" type="submit">Send request</button>
+        <p class="form-note">Or call {PHONE_DISPLAY}. We answer during business hours and return
+          after-hours messages the next morning.</p>
+      </form>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="modal-rfp" aria-labelledby="modal-rfp-title">
+    <div class="modal__head">
+      <div>
+        <h2 id="modal-rfp-title">Submit an RFP</h2>
+        <p>For multi-site portfolios and formal bid packages.</p>
+      </div>
+      <button class="modal__close" type="button" data-close-modal aria-label="Close">&times;</button>
+    </div>
+    <div class="modal__body">
+      <form data-form="rfp" novalidate>
+        <div class="form-status" data-form-status role="status"></div>
+        <div class="field-row">
+          <div class="field">
+            <label for="rfp-name">Your name</label>
+            <input id="rfp-name" name="name" type="text" autocomplete="name" required>
+            <span class="field__error"></span>
+          </div>
+          <div class="field">
+            <label for="rfp-org">Organization</label>
+            <input id="rfp-org" name="organization" type="text" autocomplete="organization" required>
+            <span class="field__error"></span>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="rfp-email">Email</label>
+            <input id="rfp-email" name="email" type="email" autocomplete="email" required>
+            <span class="field__error"></span>
+          </div>
+          <div class="field">
+            <label for="rfp-locations">Number of locations</label>
+            <input id="rfp-locations" name="locations" type="number" min="1" inputmode="numeric">
+            <span class="field__error"></span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="rfp-due">Bid due date <span class="hint">— optional</span></label>
+          <input id="rfp-due" name="due_date" type="date">
+        </div>
+        <div class="field">
+          <label for="rfp-file">Bid documents <span class="hint">— PDF, DOCX or XLSX</span></label>
+          <input id="rfp-file" name="documents" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx" multiple>
+        </div>
+        <div class="field">
+          <label for="rfp-scope">Scope summary <span class="hint">— optional</span></label>
+          <textarea id="rfp-scope" name="scope" rows="3"></textarea>
+        </div>
+        <button class="btn btn--primary" type="submit">Submit RFP</button>
+      </form>
+    </div>
+  </dialog>"""
+
+
+HEAD = """<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{title}</title>
+  <meta name="description" content="{desc}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+{todo}
+"""
+
+TAIL = """
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
+"""
+
+
+# Straight apostrophes in body copy -> typographic ones. Explicit list rather
+# than a regex so nothing inside markup, JS or attributes gets touched.
+CONTRACTIONS = [
+    "isn't", "don't", "doesn't", "won't", "can't", "didn't", "aren't", "hasn't",
+    "wasn't", "we'll", "you'll", "they'll", "it's", "It's", "That's", "that's",
+    "they're", "you're", "we're", "we've", "you've", "there's", "what's",
+    "here's", "let's", "Ventures'", "Golfers'", "who's",
+]
+
+
+def smarten(html: str) -> str:
+    for word in CONTRACTIONS:
+        html = html.replace(word, word.replace("'", "\u2019"))
+    return html
+
+
+def render(filename, title, desc, body, current, solid=True):
+    html = (
+        HEAD.format(title=title, desc=desc, todo=TODO)
+        + header(current, solid)
+        + "\n\n  <main id=\"main\">\n"
+        + body
+        + "\n  </main>\n\n"
+        + FOOTER
+        + "\n\n"
+        + MODALS
+        + TAIL
+    )
+    (ROOT / filename).write_text(smarten(html), encoding="utf-8")
+    print("wrote", filename)
+
+
+if __name__ == "__main__":
+    import pages
+    pages.build(render, page_hero, CTA_BAND, PLAN_SVG,
+                PHONE_DISPLAY, PHONE_HREF, EMAIL, ADDRESS_1, ADDRESS_2)
