@@ -517,7 +517,7 @@ li { margin-bottom: 0.35rem; }
   color: #fff;
   position: relative;
   overflow: hidden;
-  padding-top: 9rem;
+  padding-top: 3.5rem;
   padding-bottom: var(--sp-7);
   isolation: isolate;
 }
