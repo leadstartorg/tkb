@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Commercial Cleaning Services | TKB Ventures — Jani-King of Atlanta</title>
-  <meta name="description" content="Office, medical, education, retail, industrial, and hospitality cleaning, plus floor care, window washing, and post-construction cleanup across Greater Atlanta.">
+  <meta name="description" content="Office, medical, education, retail, and hospitality cleaning, plus floor care, pressure washing, and post-construction cleanup across Greater Atlanta.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -20,12 +20,13 @@
   3. Social URLs in the footer are set to "#"
   4. Form endpoints: set data-endpoint on each <form>
   5. ZIP coverage list: assets/js/main.js -> SERVICE_PREFIXES
-  6. Photography: hero uses a schematic. Add a photo with
-     .hero { --hero-photo: url("assets/img/your-photo.jpg"); }
-  7. Team photos and the three unnamed leadership cards
-  8. Service + FAQ copy is drafted from the project brief, not
+  6. IMAGES (AI-generated approved by client):
+     - hero: .hero { --hero-photo: url("assets/img/hero.jpg"); }
+     - About operations photo
+     (owner headshot is done)
+  7. Service + FAQ copy is drafted from the project brief, not
      pulled from janiking.com. Have Jani-King approve wording
-     and confirm logo / PGA co-branding usage rights.
+     and confirm logo usage rights.
   ============================================================
 -->
   <a class="skip-link" href="#main">Skip to content</a>
@@ -106,7 +107,7 @@
     <div class="wrap">
       <p class="breadcrumb"><a href="index.html">Home</a> / Services</p>
       <h1>Commercial cleaning, floor care, and specialty work</h1>
-      <p>Six core commercial service areas, plus periodic and one-time work that runs alongside your nightly janitorial contract.</p>
+      <p>Five core commercial service areas, plus periodic and one-time work that runs alongside your nightly janitorial contract.</p>
     </div>
   </section>
 
@@ -143,12 +144,6 @@
           <ul><li>Before open / after close</li><li>Sales floors</li><li>Entrances</li><li>Public restrooms</li></ul>
         </article>
         <article class="service">
-          <svg class="service__icon" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 26V13l7 4.5V13l7 4.5V8h4l1 18H4Z"/><path d="M8 21h2M15 21h2M21 21h2"/></svg>
-          <h3>Industrial &amp; manufacturing plants</h3>
-          <p>Production floors, warehouses, locker rooms, and plant offices — including machine scrubbing of hard floors and cleaning that fits between shift changes.</p>
-          <ul><li>Warehouse floors</li><li>Machine scrubbing</li><li>Locker rooms</li><li>Shift-change timing</li></ul>
-        </article>
-        <article class="service">
           <svg class="service__icon" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 20h18a9 9 0 0 0-18 0Z"/><path d="M4 24h22M15 7v4M13.5 5.5a1.5 1.5 0 1 1 3 0"/></svg>
           <h3>Hospitality &amp; event venues</h3>
           <p>Lobbies, guest areas, banquet rooms, and restrooms, plus pre- and post-event turnaround when the room has to be reset quickly between bookings.</p>
@@ -166,7 +161,8 @@
           <p class="lede">Some jobs don’t belong on a nightly schedule. Floor restoration, window
             washing, and post-construction cleanup are quoted separately and scheduled around your
             operating hours.</p>
-          <p>Available whether or not you hold a recurring contract with us.</p>
+          <p>Available whether or not you hold a recurring contract with us. We are also
+            available for one-time services if needed.</p>
           <div class="btn-row" style="margin-top: var(--sp-5);">
             <a class="btn btn--light" href="#" data-open-modal="modal-walkthrough">Get it quoted</a>
           </div>
@@ -176,34 +172,12 @@
             <li>Carpet extraction and spot treatment</li>
             <li>Hard-floor stripping, waxing, and burnishing</li>
             <li>Tile and grout restoration</li>
+            <li>Pressure washing</li>
             <li>Interior and exterior window washing</li>
             <li>Post-construction and post-renovation cleanup</li>
             <li>Multi-family and residential turnover cleaning</li>
             <li>Rapid-response disinfection</li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="split split--media">
-        <div>
-          <h2>Do we cover your address?</h2>
-          <p>Routes run within roughly 100 miles of our Norcross office, covering the Atlanta metro
-            and reaching Athens, Gainesville, Rome, and Macon at the edges.</p>
-          <a class="link-plain" href="service-areas.html">See the full coverage map</a>
-        </div>
-        <div class="zip-panel">
-          <h3>Check a ZIP code</h3>
-          <form class="zip-form" data-zip-form novalidate>
-            <label class="visually-hidden" for="zip-services">ZIP code</label>
-            <input id="zip-services" name="zip" type="text" inputmode="numeric" maxlength="5"
-                   pattern="[0-9]{5}" placeholder="30071" autocomplete="postal-code">
-            <button type="submit">Check</button>
-          </form>
-          <p class="zip-result" data-zip-result role="status"></p>
         </div>
       </div>
     </div>
@@ -240,8 +214,8 @@
             </span>
           </a>
           <address>
-            6190 Regency Parkway, Suite 300<br>
-            Norcross, GA 30071<br>
+            4045 Five Forks Trickum Road, Suite B9 #231<br>
+            Lilburn, GA 30047<br>
             <a href="tel:+17700000000">(770) 000-0000</a><br>
             <a href="mailto:info@tkbventures.com">info@tkbventures.com</a>
           </address>
@@ -261,8 +235,9 @@
 
         <div class="footer-col">
           <h3>About TKB Ventures</h3>
-          <p>TKB Ventures is an authorized Jani-King franchise operator delivering commercial
-            janitorial and facility maintenance across Greater Georgia.</p>
+          <p>As a Jani-King franchisee, TKB Ventures runs the training, inspection, and safety
+            programs of a national brand. As a locally owned business, the owner is in the same
+            metro area as your building.</p>
         </div>
 
         <div class="footer-col">
@@ -272,6 +247,7 @@
             <li><a href="services.html#commercial">Office cleaning</a></li>
             <li><a href="services.html#specialty">Disinfecting</a></li>
             <li><a href="services.html#specialty">Green cleaning</a></li>
+            <li><a href="services.html#specialty">Pressure washing</a></li>
             <li><a href="services.html#specialty">Specialty cleaning</a></li>
           </ul>
         </div>
@@ -288,17 +264,10 @@
         </div>
       </div>
 
-      <div class="pga-strip">
-        <span class="logo-plate">
-          <img src="assets/img/pga-of-america-logo.png" alt="PGA of America" width="200" height="60" loading="lazy">
-        </span>
-        <p>Official Cleaning Company of the PGA of America</p>
-      </div>
-
       <div class="footer-legal">
         <p>&copy; <span data-year>2026</span> TKB Ventures, LLC. Jani-King of Atlanta is independently
           owned and operated by TKB Ventures.</p>
-        <p>Jani-King&reg; and the PGA of America marks are the property of their respective owners.</p>
+        <p>Jani-King&reg; is the property of its respective owner.</p>
       </div>
     </div>
   </footer>

@@ -1,7 +1,12 @@
 # TKB Ventures, LLC — static site
 
 Commercial janitorial site for TKB Ventures, LLC (Carolyn Ramsey), an
-independently owned Jani-King franchise at 6190 Regency Parkway, Norcross, GA.
+independently owned Jani-King franchisee at 4045 Five Forks Trickum Road,
+Suite B9 #231, Lilburn, GA 30047.
+
+**Revision 2** applied Carolyn's change list: relocated to Lilburn, PGA of
+America removed, coverage narrowed to metro Atlanta, industrial/manufacturing
+dropped, pressure washing added, team grid replaced with the owner bio.
 
 Static HTML. No build step, no dependencies, no framework. Open `index.html`
 directly or drop the folder on any host.
@@ -12,7 +17,7 @@ directly or drop the folder on any host.
 
 ```
 index.html            Home
-about.html            Brand story, 5-step onboarding, team
+about.html            Brand story, 5-step onboarding, owner bio
 services.html         6 commercial areas + specialty/residential
 service-areas.html    Map, city directory, ZIP lookup
 faq.html              10 questions, two-column accordion
@@ -50,10 +55,19 @@ The same list is in an HTML comment at the top of every page.
 | 2 | Email `info@tkbventures.com` | all pages, `build.py` `EMAIL` |
 | 3 | Social URLs set to `#` | footer |
 | 4 | Form endpoints | add `data-endpoint="…"` to each `<form>` |
-| 5 | ZIP coverage list | `main.js` → `SERVICE_PREFIXES` / `EDGE_PREFIXES` |
-| 6 | Hero photography | `.hero { --hero-photo: url("assets/img/…"); }` |
-| 7 | Team photos + 3 unnamed leadership cards | `about.html` |
+| 5 | ZIP coverage list | `main.js` → `SERVICE_PREFIXES` |
+| 6 | Hero image (AI approved) | `.hero { --hero-photo: url("assets/img/…"); }` |
+| 7 | Operations image (AI approved) | `about.html`, first section |
 | 8 | Privacy and terms copy | `privacy.html`, `terms.html` — needs counsel |
+
+### Images
+
+Carolyn approved AI-generated imagery provided it reads as real photography.
+The owner headshot is in place: `assets/img/carolyn-ramsey.jpg`, cropped to
+4:5 from the supplied 976x2048 original and resized to 800x1000 (147 KB).
+Two slots remain stubbed as labelled placeholder boxes — the hero background
+and the About operations image — each with the exact `<img>` tag to paste in an
+HTML comment directly above it.
 
 ### Forms
 
@@ -68,11 +82,15 @@ server-side handling anyway.
 
 ### ZIP lookup
 
-`SERVICE_PREFIXES` is a list of Georgia 3-digit ZIP prefixes that fall roughly
-within 100 miles of Norcross. **These are an estimate, not a published
-Jani-King coverage map.** Confirm actual route coverage with Carolyn and edit
-the two arrays. `EDGE_PREFIXES` returns a softer "we serve it, call to confirm
-scheduling" response.
+`SERVICE_PREFIXES` covers metro Atlanta (`300`–`303`), keyed off the Lilburn
+office. **These are an estimate, not a published coverage map.** Confirm actual
+route coverage with Carolyn and edit the array.
+
+Removing the outer 100-mile row from the Service Areas page narrowed coverage,
+so Athens (`305`/`306`), Macon (`310`–`312`) and Dalton (`307`) now return
+"not on a route yet" and point to the RFP form. `EDGE_PREFIXES` is the optional
+second tier for ZIPs served with extra lead time — it's empty now, but add
+prefixes to switch it back on.
 
 ---
 
@@ -89,8 +107,14 @@ were **not** pulled from janiking.com. Two things to clear before launch:
 No statistics, client counts, years-in-business, or satisfaction figures appear
 anywhere on the site, because none were supplied.
 
-Both supplied logos sit on white plates rather than being recolored, so the
-marks render exactly as delivered against the navy footer.
+The Jani-King logo sits on a white plate rather than being recolored, so the
+mark renders exactly as delivered against the co-brand band.
+
+**PGA of America was removed** from the footer in revision 2, along with the
+hero chip that carried the "Official Cleaning Company" line and the trademark
+line in the footer legal row. `assets/img/pga-of-america-logo.png` is still in
+the folder but is no longer referenced anywhere — delete it, or restore the
+footer strip from git history if that changes.
 
 ---
 
@@ -118,6 +142,11 @@ before launch if you want to avoid the third-party request.
 
 Radius varies by hierarchy on purpose: `8px` inputs, `18px` cards, pill
 buttons. Don't collapse these to one value.
+
+The service grid draws its hairline dividers as a 1px ring on each card, not as
+a gap over a coloured grid background. Adjacent rings overlap into a single
+line, and a trailing empty cell stays white — so the card count can change
+(6 → 5 in revision 2) without leaving a grey hole in the last cell.
 
 ---
 
@@ -159,11 +188,11 @@ Mapping to `block-theme-boilerplate-1.0.0`:
 | header markup | `parts/header.html` |
 | footer + PGA strip | `parts/footer.html` |
 | home hero | `patterns/hero.php` |
-| 6 service cards | `patterns/feature-cards-6.php` |
+| 5 service cards | `patterns/feature-cards-6.php` |
 | 3 scope cards | `patterns/feature-cards.php` |
 | CTA band | `patterns/cta.php` |
 | contact forms | `patterns/contact.php` + form plugin |
-| about split | `patterns/media-split.php` |
+| about split + owner bio | `patterns/media-split.php` |
 
 The accordion, tabs, modals and ZIP lookup in `main.js` carry over to
 `assets/js/theme.js` largely unchanged — they're all plain DOM, no build.

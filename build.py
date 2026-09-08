@@ -17,8 +17,8 @@ ROOT = pathlib.Path(__file__).parent
 PHONE_DISPLAY = "(770) 000-0000"      # PLACEHOLDER
 PHONE_HREF = "+17700000000"           # PLACEHOLDER
 EMAIL = "info@tkbventures.com"        # PLACEHOLDER
-ADDRESS_1 = "6190 Regency Parkway, Suite 300"
-ADDRESS_2 = "Norcross, GA 30071"
+ADDRESS_1 = "4045 Five Forks Trickum Road, Suite B9 #231"
+ADDRESS_2 = "Lilburn, GA 30047"
 
 TODO = """<!--
   ============================================================
@@ -29,12 +29,13 @@ TODO = """<!--
   3. Social URLs in the footer are set to "#"
   4. Form endpoints: set data-endpoint on each <form>
   5. ZIP coverage list: assets/js/main.js -> SERVICE_PREFIXES
-  6. Photography: hero uses a schematic. Add a photo with
-     .hero { --hero-photo: url("assets/img/your-photo.jpg"); }
-  7. Team photos and the three unnamed leadership cards
-  8. Service + FAQ copy is drafted from the project brief, not
+  6. IMAGES (AI-generated approved by client):
+     - hero: .hero { --hero-photo: url("assets/img/hero.jpg"); }
+     - About operations photo
+     (owner headshot is done)
+  7. Service + FAQ copy is drafted from the project brief, not
      pulled from janiking.com. Have Jani-King approve wording
-     and confirm logo / PGA co-branding usage rights.
+     and confirm logo usage rights.
   ============================================================
 -->"""
 
@@ -192,8 +193,9 @@ FOOTER = f"""  <footer class="site-footer">
 
         <div class="footer-col">
           <h3>About TKB Ventures</h3>
-          <p>TKB Ventures is an authorized Jani-King franchise operator delivering commercial
-            janitorial and facility maintenance across Greater Georgia.</p>
+          <p>As a Jani-King franchisee, TKB Ventures runs the training, inspection, and safety
+            programs of a national brand. As a locally owned business, the owner is in the same
+            metro area as your building.</p>
         </div>
 
         <div class="footer-col">
@@ -203,6 +205,7 @@ FOOTER = f"""  <footer class="site-footer">
             <li><a href="services.html#commercial">Office cleaning</a></li>
             <li><a href="services.html#specialty">Disinfecting</a></li>
             <li><a href="services.html#specialty">Green cleaning</a></li>
+            <li><a href="services.html#specialty">Pressure washing</a></li>
             <li><a href="services.html#specialty">Specialty cleaning</a></li>
           </ul>
         </div>
@@ -219,17 +222,10 @@ FOOTER = f"""  <footer class="site-footer">
         </div>
       </div>
 
-      <div class="pga-strip">
-        <span class="logo-plate">
-          <img src="assets/img/pga-of-america-logo.png" alt="PGA of America" width="200" height="60" loading="lazy">
-        </span>
-        <p>Official Cleaning Company of the PGA of America</p>
-      </div>
-
       <div class="footer-legal">
         <p>&copy; <span data-year>2026</span> TKB Ventures, LLC. Jani-King of Atlanta is independently
           owned and operated by TKB Ventures.</p>
-        <p>Jani-King&reg; and the PGA of America marks are the property of their respective owners.</p>
+        <p>Jani-King&reg; is the property of its respective owner.</p>
       </div>
     </div>
   </footer>"""

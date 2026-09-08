@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About TKB Ventures | Jani-King of Atlanta</title>
-  <meta name="description" content="TKB Ventures, LLC is an independently owned Jani-King franchise in Norcross, Georgia, serving commercial facilities across the Atlanta metro.">
+  <meta name="description" content="TKB Ventures, LLC is an independently owned Jani-King franchisee in Lilburn, Georgia, serving commercial facilities across the Atlanta metro.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -20,12 +20,13 @@
   3. Social URLs in the footer are set to "#"
   4. Form endpoints: set data-endpoint on each <form>
   5. ZIP coverage list: assets/js/main.js -> SERVICE_PREFIXES
-  6. Photography: hero uses a schematic. Add a photo with
-     .hero { --hero-photo: url("assets/img/your-photo.jpg"); }
-  7. Team photos and the three unnamed leadership cards
-  8. Service + FAQ copy is drafted from the project brief, not
+  6. IMAGES (AI-generated approved by client):
+     - hero: .hero { --hero-photo: url("assets/img/hero.jpg"); }
+     - About operations photo
+     (owner headshot is done)
+  7. Service + FAQ copy is drafted from the project brief, not
      pulled from janiking.com. Have Jani-King approve wording
-     and confirm logo / PGA co-branding usage rights.
+     and confirm logo usage rights.
   ============================================================
 -->
   <a class="skip-link" href="#main">Skip to content</a>
@@ -57,7 +58,7 @@
         <ul class="nav__list">
           <li><a class="nav__link" href="about.html" aria-current="page">About</a></li>
           <li><a class="nav__link" href="services.html">Services</a></li>
-          <li><a class="nav__link" href="service-areas.html">Service Areas</a></li>
+          <li><a class="nav__link" href="service-areas.html">Service areas</a></li>
           <li><a class="nav__link" href="faq.html">FAQ</a></li>
           <li><a class="nav__link" href="contact.html">Contact</a></li>
         </ul>
@@ -106,7 +107,7 @@
     <div class="wrap">
       <p class="breadcrumb"><a href="index.html">Home</a> / About</p>
       <h1>Local ownership, national systems</h1>
-      <p>TKB Ventures, LLC is an independently owned Jani-King franchise operating out of Norcross, Georgia.</p>
+      <p>TKB Ventures, LLC is an independently owned Jani-King franchisee operating out of Lilburn, Georgia.</p>
     </div>
   </section>
 
@@ -114,7 +115,9 @@
     <div class="wrap">
       <div class="split split--media">
         <div>
-          <!-- TODO: replace with a photograph of the crew or a serviced facility -->
+          <!-- TODO: drop in the operations image (AI-generated is approved, provided it
+               reads as a real facility). Replace this whole div with:
+               <img src="assets/img/operations.jpg" alt="..." width="960" height="720"> -->
           <div class="person__photo" style="aspect-ratio: 4 / 3;">
             <span style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em;">
               OPERATIONS PHOTO
@@ -123,14 +126,11 @@
         </div>
         <div>
           <h2>Why TKB Ventures exists</h2>
-          <p>Facility managers in Atlanta have two bad options. Hire a small independent cleaner and
-            get responsiveness without systems. Hire a national account and get systems without
-            anyone who answers the phone.</p>
-          <p>TKB Ventures was built to close that gap. As a Jani-King franchise we run the training,
-            inspection, and safety programs of a national brand. As a locally owned business, the
-            owner is in the same metro as your building.</p>
+          <p>As a Jani-King franchisee, TKB Ventures runs the training, inspection, and safety
+            programs of a national brand. As a locally owned business, the owner is in the same
+            metro area as your building.</p>
           <p>We serve office buildings, medical practices, schools and childcare centers, retail
-            centers, industrial plants, and event venues within roughly 100 miles of Norcross.</p>
+            centers, and event venues across the Atlanta metro.</p>
         </div>
       </div>
     </div>
@@ -161,22 +161,23 @@
           <div class="step">
             <div>
               <h3>Crew assignment and training</h3>
-              <p>We assign a specific crew, run background checks, and train them on your building
-                before their first shift — including your access and key-control procedures.</p>
+              <p>We assign a specific crew, run background checks, and train them on your
+                building before their first shift.</p>
             </div>
           </div>
           <div class="step">
             <div>
               <h3>Service begins</h3>
-              <p>Typically within 24 to 48 hours of approval, depending on crew scheduling and any
-                badging your site requires.</p>
+              <p>Typically within 24 to 48 hours of approval, depending on crew scheduling and
+                the needs of the customer.</p>
             </div>
           </div>
           <div class="step">
             <div>
               <h3>Scheduled inspections</h3>
-              <p>Quality assurance visits happen on a set schedule against the Jani-King standard.
-                Findings are documented and shared with your point of contact.</p>
+              <p>We perform routine, scheduled quality assurance inspections periodically. If
+                there is a problem, we report it to the point of contact or the office
+                management.</p>
             </div>
           </div>
         </div>
@@ -186,36 +187,22 @@
 
   <section class="section">
     <div class="wrap">
-      <div class="section-head">
-        <h2>Who you’ll be working with</h2>
-        <p>Accountability has a name on it. These are the people responsible for your account.</p>
-      </div>
-      <div class="team-grid">
-        <!-- TODO: add headshots and confirm titles and bios with each person -->
-        <article class="person">
-          <div class="person__photo"><span style="font-family: var(--font-mono); font-size: 0.7rem;">PHOTO</span></div>
-          <h3>Carolyn Ramsey</h3>
-          <p class="person__role">Owner</p>
-          <p>Owner of TKB Ventures, LLC and the Jani-King franchise for the Atlanta market.</p>
-        </article>
-        <article class="person">
-          <div class="person__photo"><span style="font-family: var(--font-mono); font-size: 0.7rem;">PHOTO</span></div>
-          <h3>Name</h3>
-          <p class="person__role">Operations director</p>
-          <p>Placeholder. Replace with a short line on what this person is responsible for.</p>
-        </article>
-        <article class="person">
-          <div class="person__photo"><span style="font-family: var(--font-mono); font-size: 0.7rem;">PHOTO</span></div>
-          <h3>Name</h3>
-          <p class="person__role">Field manager</p>
-          <p>Placeholder. Replace with a short line on what this person is responsible for.</p>
-        </article>
-        <article class="person">
-          <div class="person__photo"><span style="font-family: var(--font-mono); font-size: 0.7rem;">PHOTO</span></div>
-          <h3>Name</h3>
-          <p class="person__role">Quality assurance</p>
-          <p>Placeholder. Replace with a short line on what this person is responsible for.</p>
-        </article>
+      <div class="owner">
+        <div class="owner__media">
+          <img class="owner__photo" src="assets/img/carolyn-ramsey.jpg"
+               alt="Carolyn Ramsey, owner of TKB Ventures, LLC"
+               width="800" height="1000" loading="lazy" decoding="async">
+        </div>
+        <div class="owner__body">
+          <h2>Meet the owner</h2>
+          <p class="person__role">Carolyn Ramsey &mdash; Owner, TKB Ventures, LLC</p>
+          <p>The business started in 1990 in Charleston, South Carolina. We came to Atlanta in
+            1998, and we have been in business here in Atlanta since 2010. The business we built
+            is highly recommended by national brands, and we are now expanding to residential
+            services.</p>
+          <p>She lives in Lilburn with her family &mdash; two daughters, one son, a grandson, and a
+            dog named Cody.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -251,8 +238,8 @@
             </span>
           </a>
           <address>
-            6190 Regency Parkway, Suite 300<br>
-            Norcross, GA 30071<br>
+            4045 Five Forks Trickum Road, Suite B9 #231<br>
+            Lilburn, GA 30047<br>
             <a href="tel:+17700000000">(770) 000-0000</a><br>
             <a href="mailto:info@tkbventures.com">info@tkbventures.com</a>
           </address>
@@ -272,8 +259,9 @@
 
         <div class="footer-col">
           <h3>About TKB Ventures</h3>
-          <p>TKB Ventures is an authorized Jani-King franchise operator delivering commercial
-            janitorial and facility maintenance across Greater Georgia.</p>
+          <p>As a Jani-King franchisee, TKB Ventures runs the training, inspection, and safety
+            programs of a national brand. As a locally owned business, the owner is in the same
+            metro area as your building.</p>
         </div>
 
         <div class="footer-col">
@@ -283,6 +271,7 @@
             <li><a href="services.html#commercial">Office cleaning</a></li>
             <li><a href="services.html#specialty">Disinfecting</a></li>
             <li><a href="services.html#specialty">Green cleaning</a></li>
+            <li><a href="services.html#specialty">Pressure washing</a></li>
             <li><a href="services.html#specialty">Specialty cleaning</a></li>
           </ul>
         </div>
@@ -299,17 +288,10 @@
         </div>
       </div>
 
-      <div class="pga-strip">
-        <span class="logo-plate">
-          <img src="assets/img/pga-of-america-logo.png" alt="PGA of America" width="200" height="60" loading="lazy">
-        </span>
-        <p>Official Cleaning Company of the PGA of America</p>
-      </div>
-
       <div class="footer-legal">
         <p>&copy; <span data-year>2026</span> TKB Ventures, LLC. Jani-King of Atlanta is independently
           owned and operated by TKB Ventures.</p>
-        <p>Jani-King&reg; and the PGA of America marks are the property of their respective owners.</p>
+        <p>Jani-King&reg; is the property of its respective owner.</p>
       </div>
     </div>
   </footer>

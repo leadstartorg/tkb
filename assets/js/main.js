@@ -107,28 +107,20 @@
      ZIP / service-area lookup
 
      >>> VERIFY BEFORE LAUNCH <<<
-     These are 3-digit ZIP prefixes for Georgia regions that fall roughly
-     within a 100-mile drive of Norcross. Confirm the real coverage list
-     with Carolyn and edit SERVICE_PREFIXES + EDGE_PREFIXES below. Nothing
-     here is drawn from a published Jani-King coverage map.
+     These are 3-digit ZIP prefixes covering metro Atlanta, keyed off the
+     Lilburn office. Confirm the real coverage list with Carolyn and edit
+     SERVICE_PREFIXES below. Nothing here comes from a published coverage map.
      ------------------------------------------------------------------ */
   var SERVICE_PREFIXES = [
-    "300", // Atlanta north metro — Norcross, Duluth, Roswell, Marietta, Lawrenceville
-    "301", // Athens/NE Georgia + parts of NW
-    "302", // Atlanta
-    "303", // Atlanta
-    "305", // Athens area
-    "306"  // Athens area
+    "300", // Lilburn, Norcross, Duluth, Roswell, Marietta, Lawrenceville, Decatur, Snellville
+    "301", // north and northeast metro
+    "302", // south metro — McDonough, Newnan, Peachtree City, Stockbridge
+    "303"  // Atlanta proper
   ];
 
-  // Served, but scheduling may need extra lead time.
-  var EDGE_PREFIXES = [
-    "307", // Dalton / NW Georgia
-    "308", // Augusta side
-    "310", // Macon
-    "311", // Macon
-    "312"  // Macon area
-  ];
+  // Optional second tier: ZIPs served with extra scheduling lead time. Empty
+  // while coverage is metro-only — add prefixes here to switch it back on.
+  var EDGE_PREFIXES = [];
 
   document.querySelectorAll("[data-zip-form]").forEach(function (form) {
     var input = form.querySelector("input");
@@ -139,6 +131,7 @@
       if (!input || !result) return;
 
       var zip = (input.value || "").trim();
+
 
       if (!/^\d{5}$/.test(zip)) {
         result.setAttribute("data-state", "error");

@@ -61,11 +61,11 @@ def accordion(items, ident, ink=False):
 
 ZIP_CARD_DARK = """        <div class="scope-card scope-card--tool">
           <h3>Are you in our radius?</h3>
-          <p>We run routes within about 100 miles of Norcross. Check your ZIP code.</p>
+          <p>We run routes across the Atlanta metro. Check your ZIP code.</p>
           <form class="zip-form" data-zip-form novalidate>
             <label class="visually-hidden" for="zip-home">ZIP code</label>
             <input id="zip-home" name="zip" type="text" inputmode="numeric" maxlength="5"
-                   pattern="[0-9]{5}" placeholder="30071" autocomplete="postal-code">
+                   pattern="[0-9]{5}" placeholder="30047" autocomplete="postal-code">
             <button type="submit">Check</button>
           </form>
           <p class="zip-result" data-zip-result role="status"></p>
@@ -76,31 +76,26 @@ ZIP_CARD_DARK = """        <div class="scope-card scope-card--tool">
 # --- FAQ content (10 questions, from the client brief) ---------------------
 
 FAQ_ALL = [
-    ("Is TKB Ventures / Jani-King fully insured and bonded?",
+    ("Is TKB Ventures fully insured and bonded?",
      "Yes. We carry comprehensive general liability, property damage, and workers' compensation "
      "coverage. Certificates of insurance are available on request and can be issued naming your "
      "organization before service begins."),
 
-    ("How does the partnership between TKB Ventures and Jani-King work?",
-     "TKB Ventures is an independently owned Jani-King franchise operator. You get local ownership "
-     "and local management, backed by Jani-King's national training standards, systems, and "
-     "purchasing."),
-
     ("Can we customize our commercial cleaning schedule?",
      "Yes. We provide daily, weekly, bi-weekly, or customized after-hours cleaning built around how "
-     "your building actually runs — including overnight, early-morning, and weekend windows."),
+     "your building actually runs."),
 
     ("What is included in a standard commercial walk-through?",
      "We assess square footage, high-traffic zones, floor types, restroom counts, and any specific "
      "sanitation requirements, then build a written scope and quote from what we find on site."),
 
     ("How is cleaning quality monitored and maintained?",
-     "TKB Ventures performs routine, scheduled quality assurance inspections against the Jani-King "
-     "standard. Findings go to your point of contact so nothing is corrected quietly or repeated."),
+     "We perform routine, scheduled quality assurance inspections periodically. If there is a "
+     "problem, we report it to the point of contact or the office management."),
 
     ("Do you offer eco-friendly or green cleaning options?",
-     "Yes. We use eco-friendly, non-toxic products and micro-fiber protocols that meet LEED "
-     "standards. If your facility has its own approved-chemical list, we work from it."),
+     "Yes. We use eco-friendly, non-toxic products and micro-fiber protocols that meet standards. "
+     "If your facility has its own approved-chemical list, we work from it."),
 
     ("What safety and security protocols do your crews follow?",
      "All staff undergo background checks, wear uniform badges, and follow your keycard and access "
@@ -109,7 +104,7 @@ FAQ_ALL = [
 
     ("How quickly can service start after a site walk-through?",
      "Service can typically begin within 24 to 48 hours of proposal approval and walk-through "
-     "completion, depending on crew scheduling and any badging your site requires."),
+     "completion, depending on crew scheduling and the needs of the customer."),
 
     ("Do you handle emergency or one-time deep cleanings?",
      "Yes. We offer rapid-response disinfection, post-construction cleanup, and event cleaning, "
@@ -117,10 +112,11 @@ FAQ_ALL = [
 
     ("What specialized floor care services do you offer?",
      "Carpet extraction, hard-floor stripping and waxing, tile and grout restoration, and polishing "
-     "— scheduled as periodic work alongside nightly janitorial, or booked on its own."),
+     "— scheduled as periodic work alongside nightly janitorial, or booked on its own. We are also "
+     "available for one-time services if needed."),
 ]
 
-FAQ_HOME = [FAQ_ALL[0], FAQ_ALL[2], FAQ_ALL[8], FAQ_ALL[4]]
+FAQ_HOME = [FAQ_ALL[0], FAQ_ALL[1], FAQ_ALL[6], FAQ_ALL[3]]
 
 
 # --- service content -------------------------------------------------------
@@ -146,11 +142,6 @@ SERVICES = [
      "close, so the store is customer-ready at the start of every trading day.",
      ["Before open / after close", "Sales floors", "Entrances", "Public restrooms"]),
 
-    ("industrial", "Industrial &amp; manufacturing plants",
-     "Production floors, warehouses, locker rooms, and plant offices — including machine scrubbing "
-     "of hard floors and cleaning that fits between shift changes.",
-     ["Warehouse floors", "Machine scrubbing", "Locker rooms", "Shift-change timing"]),
-
     ("hospitality", "Hospitality &amp; event venues",
      "Lobbies, guest areas, banquet rooms, and restrooms, plus pre- and post-event turnaround when "
      "the room has to be reset quickly between bookings.",
@@ -161,6 +152,7 @@ SPECIALTY = [
     "Carpet extraction and spot treatment",
     "Hard-floor stripping, waxing, and burnishing",
     "Tile and grout restoration",
+    "Pressure washing",
     "Interior and exterior window washing",
     "Post-construction and post-renovation cleanup",
     "Multi-family and residential turnover cleaning",
@@ -185,13 +177,11 @@ def service_grid():
 
 AREAS = [
     ("Greater Atlanta &amp; north metro",
-     "Norcross, Duluth, Alpharetta, Johns Creek, Roswell, Sandy Springs, Dunwoody, Marietta, "
-     "Smyrna, Kennesaw, Cumming, Suwanee, Buford, Lawrenceville"),
+     "Lilburn, Norcross, Duluth, Alpharetta, Johns Creek, Roswell, Sandy Springs, Dunwoody, "
+     "Marietta, Smyrna, Kennesaw, Cumming, Suwanee, Buford, Lawrenceville"),
     ("East &amp; south metro",
      "Decatur, Stone Mountain, Conyers, Covington, Snellville, McDonough, Peachtree City, "
      "Newnan, Stockbridge"),
-    ("Outer 100-mile radius",
-     "Athens, Gainesville, Canton, Woodstock, Cartersville, Dalton, Rome, Griffin, Macon"),
 ]
 
 
@@ -210,12 +200,12 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
         <div>
           <p class="chip hero__chip" data-enter="1">
             <span class="chip__dot" aria-hidden="true"></span>
-            Official Cleaning Company of the PGA of America
+            Serving Greater Atlanta since 2010
           </p>
           <h1 data-enter="2">Locally owned. Cleaned to a national standard.</h1>
           <p class="hero__intro" data-enter="3">TKB Ventures is an independently owned Jani-King
-            franchise in Norcross, Georgia, cleaning offices, clinics, schools, plants, and retail
-            space across the Atlanta metro.</p>
+            franchisee in Lilburn, Georgia, cleaning offices, clinics, schools, and retail space
+            across the Atlanta metro.</p>
           <div class="btn-row" data-enter="4">
             <a class="btn btn--light" href="#" data-open-modal="modal-walkthrough">Request walk-through</a>
             <a class="btn btn--ghost-light" href="#" data-open-modal="modal-rfp">Submit RFP</a>
@@ -279,7 +269,6 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
             <li>Healthcare and medical facilities</li>
             <li>Schools and childcare</li>
             <li>Retail and shopping centers</li>
-            <li>Industrial and manufacturing</li>
             <li>Hospitality and event venues</li>
           </ul>
           <a class="link-plain" href="services.html#commercial">See commercial services</a>
@@ -291,6 +280,7 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
             <li>Floor stripping, waxing, burnishing</li>
             <li>Carpet extraction</li>
             <li>Tile and grout restoration</li>
+            <li>Pressure washing</li>
             <li>Window washing</li>
             <li>Post-construction cleanup</li>
             <li>Multi-family turnover</li>
@@ -317,9 +307,9 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
         </div>
         <div>
           <h2>A national brand standard, run by people who live here</h2>
-          <p>Jani-King has been building commercial cleaning systems for decades — training programs,
-            inspection procedures, safety protocols, and equipment standards that most independent
-            janitorial companies never develop.</p>
+          <p>Our national standard covers training programs, inspection procedures, safety
+            protocols, and equipment standards that most independent janitorial companies never
+            develop.</p>
           <p>TKB Ventures runs those systems in Greater Atlanta. Carolyn Ramsey and her team hire,
             train, schedule, and inspect locally, so the person accountable for your building is
             someone you can reach directly.</p>
@@ -341,11 +331,8 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
         </div>
         <div>
           <h2>Quality control isn't a promise, it's a schedule</h2>
-          <p>Most cleaning contracts start well. What separates a good vendor from a bad one is what
-            the building looks like in month seven.</p>
-          <p>We inspect on a set schedule rather than when a complaint comes in. Inspections follow
-            the Jani-King standard, findings are written down, and your point of contact sees them.
-            When something slips, you hear about it from us first.</p>
+          <p>We perform routine, scheduled quality assurance inspections periodically. If there is
+            a problem, we report it to the point of contact or the office management.</p>
           <p>Crews are background-checked and badged, follow your access and key-control rules, and
             are trained before they're assigned — not after.</p>
           <div class="btn-row" style="margin-top: var(--sp-5);">
@@ -359,22 +346,24 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
 {CTA_BAND}"""
 
     render("index.html",
-           "TKB Ventures | Jani-King of Atlanta — Commercial Cleaning in Norcross, GA",
+           "TKB Ventures | Jani-King of Atlanta — Commercial Cleaning in Lilburn, GA",
            "Commercial janitorial and facility maintenance across Greater Atlanta. "
-           "TKB Ventures is an independently owned Jani-King franchise based in Norcross, Georgia.",
+           "TKB Ventures is an independently owned Jani-King franchisee based in Lilburn, Georgia.",
            home, "index.html", solid=False)
 
     # --------------------------------------------------------------- ABOUT
     about = page_hero(
         "Local ownership, national systems",
-        "TKB Ventures, LLC is an independently owned Jani-King franchise operating out of Norcross, "
-        "Georgia.", "About") + f"""
+        "TKB Ventures, LLC is an independently owned Jani-King franchisee operating out of "
+        "Lilburn, Georgia.", "About") + f"""
 
   <section class="section">
     <div class="wrap">
       <div class="split split--media">
         <div>
-          <!-- TODO: replace with a photograph of the crew or a serviced facility -->
+          <!-- TODO: drop in the operations image (AI-generated is approved, provided it
+               reads as a real facility). Replace this whole div with:
+               <img src="assets/img/operations.jpg" alt="..." width="960" height="720"> -->
           <div class="person__photo" style="aspect-ratio: 4 / 3;">
             <span style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em;">
               OPERATIONS PHOTO
@@ -383,14 +372,11 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
         </div>
         <div>
           <h2>Why TKB Ventures exists</h2>
-          <p>Facility managers in Atlanta have two bad options. Hire a small independent cleaner and
-            get responsiveness without systems. Hire a national account and get systems without
-            anyone who answers the phone.</p>
-          <p>TKB Ventures was built to close that gap. As a Jani-King franchise we run the training,
-            inspection, and safety programs of a national brand. As a locally owned business, the
-            owner is in the same metro as your building.</p>
+          <p>As a Jani-King franchisee, TKB Ventures runs the training, inspection, and safety
+            programs of a national brand. As a locally owned business, the owner is in the same
+            metro area as your building.</p>
           <p>We serve office buildings, medical practices, schools and childcare centers, retail
-            centers, industrial plants, and event venues within roughly 100 miles of Norcross.</p>
+            centers, and event venues across the Atlanta metro.</p>
         </div>
       </div>
     </div>
@@ -421,22 +407,23 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
           <div class="step">
             <div>
               <h3>Crew assignment and training</h3>
-              <p>We assign a specific crew, run background checks, and train them on your building
-                before their first shift — including your access and key-control procedures.</p>
+              <p>We assign a specific crew, run background checks, and train them on your
+                building before their first shift.</p>
             </div>
           </div>
           <div class="step">
             <div>
               <h3>Service begins</h3>
-              <p>Typically within 24 to 48 hours of approval, depending on crew scheduling and any
-                badging your site requires.</p>
+              <p>Typically within 24 to 48 hours of approval, depending on crew scheduling and
+                the needs of the customer.</p>
             </div>
           </div>
           <div class="step">
             <div>
               <h3>Scheduled inspections</h3>
-              <p>Quality assurance visits happen on a set schedule against the Jani-King standard.
-                Findings are documented and shared with your point of contact.</p>
+              <p>We perform routine, scheduled quality assurance inspections periodically. If
+                there is a problem, we report it to the point of contact or the office
+                management.</p>
             </div>
           </div>
         </div>
@@ -446,36 +433,22 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
 
   <section class="section">
     <div class="wrap">
-      <div class="section-head">
-        <h2>Who you'll be working with</h2>
-        <p>Accountability has a name on it. These are the people responsible for your account.</p>
-      </div>
-      <div class="team-grid">
-        <!-- TODO: add headshots and confirm titles and bios with each person -->
-        <article class="person">
-          <div class="person__photo"><span style="font-family: var(--font-mono); font-size: 0.7rem;">PHOTO</span></div>
-          <h3>Carolyn Ramsey</h3>
-          <p class="person__role">Owner</p>
-          <p>Owner of TKB Ventures, LLC and the Jani-King franchise for the Atlanta market.</p>
-        </article>
-        <article class="person">
-          <div class="person__photo"><span style="font-family: var(--font-mono); font-size: 0.7rem;">PHOTO</span></div>
-          <h3>Name</h3>
-          <p class="person__role">Operations director</p>
-          <p>Placeholder. Replace with a short line on what this person is responsible for.</p>
-        </article>
-        <article class="person">
-          <div class="person__photo"><span style="font-family: var(--font-mono); font-size: 0.7rem;">PHOTO</span></div>
-          <h3>Name</h3>
-          <p class="person__role">Field manager</p>
-          <p>Placeholder. Replace with a short line on what this person is responsible for.</p>
-        </article>
-        <article class="person">
-          <div class="person__photo"><span style="font-family: var(--font-mono); font-size: 0.7rem;">PHOTO</span></div>
-          <h3>Name</h3>
-          <p class="person__role">Quality assurance</p>
-          <p>Placeholder. Replace with a short line on what this person is responsible for.</p>
-        </article>
+      <div class="owner">
+        <div class="owner__media">
+          <img class="owner__photo" src="assets/img/carolyn-ramsey.jpg"
+               alt="Carolyn Ramsey, owner of TKB Ventures, LLC"
+               width="800" height="1000" loading="lazy" decoding="async">
+        </div>
+        <div class="owner__body">
+          <h2>Meet the owner</h2>
+          <p class="person__role">Carolyn Ramsey &mdash; Owner, TKB Ventures, LLC</p>
+          <p>The business started in 1990 in Charleston, South Carolina. We came to Atlanta in
+            1998, and we have been in business here in Atlanta since 2010. The business we built
+            is highly recommended by national brands, and we are now expanding to residential
+            services.</p>
+          <p>She lives in Lilburn with her family &mdash; two daughters, one son, a grandson, and a
+            dog named Cody.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -484,7 +457,7 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
 
     render("about.html",
            "About TKB Ventures | Jani-King of Atlanta",
-           "TKB Ventures, LLC is an independently owned Jani-King franchise in Norcross, Georgia, "
+           "TKB Ventures, LLC is an independently owned Jani-King franchisee in Lilburn, Georgia, "
            "serving commercial facilities across the Atlanta metro.",
            about, "about.html")
 
@@ -493,7 +466,7 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
 
     services = page_hero(
         "Commercial cleaning, floor care, and specialty work",
-        "Six core commercial service areas, plus periodic and one-time work that runs alongside "
+        "Five core commercial service areas, plus periodic and one-time work that runs alongside "
         "your nightly janitorial contract.", "Services") + f"""
 
   <section class="section" id="commercial">
@@ -515,7 +488,8 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
           <p class="lede">Some jobs don't belong on a nightly schedule. Floor restoration, window
             washing, and post-construction cleanup are quoted separately and scheduled around your
             operating hours.</p>
-          <p>Available whether or not you hold a recurring contract with us.</p>
+          <p>Available whether or not you hold a recurring contract with us. We are also
+            available for one-time services if needed.</p>
           <div class="btn-row" style="margin-top: var(--sp-5);">
             <a class="btn btn--light" href="#" data-open-modal="modal-walkthrough">Get it quoted</a>
           </div>
@@ -529,35 +503,12 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="split split--media">
-        <div>
-          <h2>Do we cover your address?</h2>
-          <p>Routes run within roughly 100 miles of our Norcross office, covering the Atlanta metro
-            and reaching Athens, Gainesville, Rome, and Macon at the edges.</p>
-          <a class="link-plain" href="service-areas.html">See the full coverage map</a>
-        </div>
-        <div class="zip-panel">
-          <h3>Check a ZIP code</h3>
-          <form class="zip-form" data-zip-form novalidate>
-            <label class="visually-hidden" for="zip-services">ZIP code</label>
-            <input id="zip-services" name="zip" type="text" inputmode="numeric" maxlength="5"
-                   pattern="[0-9]{{5}}" placeholder="30071" autocomplete="postal-code">
-            <button type="submit">Check</button>
-          </form>
-          <p class="zip-result" data-zip-result role="status"></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
 {CTA_BAND}"""
 
     render("services.html",
            "Commercial Cleaning Services | TKB Ventures — Jani-King of Atlanta",
-           "Office, medical, education, retail, industrial, and hospitality cleaning, plus floor "
-           "care, window washing, and post-construction cleanup across Greater Atlanta.",
+           "Office, medical, education, retail, and hospitality cleaning, plus floor care, "
+           "pressure washing, and post-construction cleanup across Greater Atlanta.",
            services, "services.html")
 
     # ------------------------------------------------------- SERVICE AREAS
@@ -567,24 +518,24 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
         for region, cities in AREAS
     )
 
-    map_q = "6190+Regency+Parkway+Suite+300,+Norcross,+GA+30071"
+    map_q = "4045+Five+Forks+Trickum+Rd,+Lilburn,+GA+30047"
 
     areas = page_hero(
         "Where we run routes",
-        "Our office is at 6190 Regency Parkway in Norcross. We service facilities within roughly "
-        "100 miles of it.", "Service areas") + f"""
+        "Our office is in Lilburn, Georgia. We service commercial facilities across the "
+        "Atlanta metro.", "Service areas") + f"""
 
   <section class="section">
     <div class="wrap">
       <div class="map-frame">
         <iframe
-          title="Map showing TKB Ventures at 6190 Regency Parkway, Norcross, Georgia"
+          title="Map showing the TKB Ventures service area around Lilburn, Georgia"
           src="https://maps.google.com/maps?q={map_q}&amp;z=8&amp;output=embed"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-      <p class="form-note">Map is centered on our Norcross office. For an exact radius overlay,
-        swap this for the Google Maps Embed API with a drawn 100-mile circle.</p>
+      <p class="form-note">Map is centered on Lilburn. For a drawn service-area boundary, swap
+        this for the Google Maps Embed API.</p>
     </div>
   </section>
 
@@ -592,8 +543,8 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
     <div class="wrap">
       <div class="section-head">
         <h2>Cities we serve</h2>
-        <p>Grouped by how far they sit from Norcross. If your city isn't listed, ask — we bid
-          outside the radius for multi-site contracts.</p>
+        <p>Grouped by area. If your city isn't listed, ask — we bid outside the metro for
+          multi-site contracts.</p>
       </div>
       <div class="table-wrap">
         <table>
@@ -624,7 +575,7 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
           <form class="zip-form" data-zip-form novalidate>
             <label class="visually-hidden" for="zip-areas">ZIP code</label>
             <input id="zip-areas" name="zip" type="text" inputmode="numeric" maxlength="5"
-                   pattern="[0-9]{{5}}" placeholder="30071" autocomplete="postal-code">
+                   pattern="[0-9]{{5}}" placeholder="30047" autocomplete="postal-code">
             <button type="submit">Check</button>
           </form>
           <p class="zip-result" data-zip-result role="status"></p>
@@ -636,14 +587,14 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
 {CTA_BAND}"""
 
     render("service-areas.html",
-           "Service Areas | TKB Ventures — Commercial Cleaning near Norcross, GA",
-           "TKB Ventures services commercial facilities within roughly 100 miles of Norcross, "
-           "Georgia, across the Atlanta metro and out to Athens, Rome, and Macon.",
+           "Service Areas | TKB Ventures — Commercial Cleaning near Lilburn, GA",
+           "TKB Ventures services commercial facilities across the Atlanta metro from its "
+           "office in Lilburn, Georgia.",
            areas, "service-areas.html")
 
     # -------------------------------------------------------------- FAQ
     left = accordion(FAQ_ALL[:5], "faq-left")
-    right = accordion(FAQ_ALL[5:], "faq-right")
+    right = accordion(FAQ_ALL[5:], "faq-right")  # 9 questions -> 5 / 4
 
     faq = page_hero(
         "Frequently asked questions",
@@ -684,7 +635,7 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
     render("faq.html",
            "FAQ | TKB Ventures — Jani-King of Atlanta",
            "Answers on insurance and bonding, custom schedules, green cleaning, crew background "
-           "checks, emergency cleaning, and floor care from TKB Ventures in Norcross, GA.",
+           "checks, emergency cleaning, and floor care from TKB Ventures in Lilburn, GA.",
            faq, "faq.html")
 
     # ---------------------------------------------------------- CONTACT
@@ -715,10 +666,6 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
               <dt>Office hours</dt>
               <dd class="normal">Monday to Friday, 8:00am to 5:00pm ET<br>
                 After-hours messages returned the next business morning.</dd>
-            </div>
-            <div>
-              <dt>Service hours</dt>
-              <dd class="normal">Crews run days, nights, and weekends depending on your scope.</dd>
             </div>
           </dl>
         </div>
@@ -767,7 +714,6 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
                     <option>Healthcare / medical</option>
                     <option>School / childcare</option>
                     <option>Retail / shopping center</option>
-                    <option>Industrial / manufacturing</option>
                     <option>Hospitality / event venue</option>
                     <option>Multi-family / residential</option>
                     <option>Other</option>
@@ -861,9 +807,8 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
   </section>"""
 
     render("contact.html",
-           "Contact TKB Ventures | Jani-King of Atlanta, Norcross GA",
-           "Request a cleaning quote or submit an RFP to TKB Ventures, LLC — 6190 Regency Parkway, "
-           "Norcross, Georgia.",
+           "Contact TKB Ventures | Jani-King of Atlanta, Lilburn GA",
+           "Request a cleaning quote or submit an RFP to TKB Ventures, LLC in Lilburn, Georgia.",
            contact, "contact.html")
 
     # ------------------------------------------------------------ CAREERS

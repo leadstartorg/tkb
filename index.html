@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TKB Ventures | Jani-King of Atlanta — Commercial Cleaning in Norcross, GA</title>
-  <meta name="description" content="Commercial janitorial and facility maintenance across Greater Atlanta. TKB Ventures is an independently owned Jani-King franchise based in Norcross, Georgia.">
+  <title>TKB Ventures | Jani-King of Atlanta — Commercial Cleaning in Lilburn, GA</title>
+  <meta name="description" content="Commercial janitorial and facility maintenance across Greater Atlanta. TKB Ventures is an independently owned Jani-King franchisee based in Lilburn, Georgia.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -20,12 +20,13 @@
   3. Social URLs in the footer are set to "#"
   4. Form endpoints: set data-endpoint on each <form>
   5. ZIP coverage list: assets/js/main.js -> SERVICE_PREFIXES
-  6. Photography: hero uses a schematic. Add a photo with
-     .hero { --hero-photo: url("assets/img/your-photo.jpg"); }
-  7. Team photos and the three unnamed leadership cards
-  8. Service + FAQ copy is drafted from the project brief, not
+  6. IMAGES (AI-generated approved by client):
+     - hero: .hero { --hero-photo: url("assets/img/hero.jpg"); }
+     - About operations photo
+     (owner headshot is done)
+  7. Service + FAQ copy is drafted from the project brief, not
      pulled from janiking.com. Have Jani-King approve wording
-     and confirm logo / PGA co-branding usage rights.
+     and confirm logo usage rights.
   ============================================================
 -->
   <a class="skip-link" href="#main">Skip to content</a>
@@ -109,12 +110,12 @@
         <div>
           <p class="chip hero__chip" data-enter="1">
             <span class="chip__dot" aria-hidden="true"></span>
-            Official Cleaning Company of the PGA of America
+            Serving Greater Atlanta since 2010
           </p>
           <h1 data-enter="2">Locally owned. Cleaned to a national standard.</h1>
           <p class="hero__intro" data-enter="3">TKB Ventures is an independently owned Jani-King
-            franchise in Norcross, Georgia, cleaning offices, clinics, schools, plants, and retail
-            space across the Atlanta metro.</p>
+            franchisee in Lilburn, Georgia, cleaning offices, clinics, schools, and retail space
+            across the Atlanta metro.</p>
           <div class="btn-row" data-enter="4">
             <a class="btn btn--light" href="#" data-open-modal="modal-walkthrough">Request walk-through</a>
             <a class="btn btn--ghost-light" href="#" data-open-modal="modal-rfp">Submit RFP</a>
@@ -147,7 +148,7 @@
               </a>
             </li>
           </ul>
-          <p class="hero-card__note">6190 Regency Parkway, Suite 300, Norcross, GA 30071</p>
+          <p class="hero-card__note">4045 Five Forks Trickum Road, Suite B9 #231, Lilburn, GA 30047</p>
         </aside>
       </div>
     </div>
@@ -178,7 +179,6 @@
             <li>Healthcare and medical facilities</li>
             <li>Schools and childcare</li>
             <li>Retail and shopping centers</li>
-            <li>Industrial and manufacturing</li>
             <li>Hospitality and event venues</li>
           </ul>
           <a class="link-plain" href="services.html#commercial">See commercial services</a>
@@ -190,6 +190,7 @@
             <li>Floor stripping, waxing, burnishing</li>
             <li>Carpet extraction</li>
             <li>Tile and grout restoration</li>
+            <li>Pressure washing</li>
             <li>Window washing</li>
             <li>Post-construction cleanup</li>
             <li>Multi-family turnover</li>
@@ -199,11 +200,11 @@
 
         <div class="scope-card scope-card--tool">
           <h3>Are you in our radius?</h3>
-          <p>We run routes within about 100 miles of Norcross. Check your ZIP code.</p>
+          <p>We run routes across the Atlanta metro. Check your ZIP code.</p>
           <form class="zip-form" data-zip-form novalidate>
             <label class="visually-hidden" for="zip-home">ZIP code</label>
             <input id="zip-home" name="zip" type="text" inputmode="numeric" maxlength="5"
-                   pattern="[0-9]{5}" placeholder="30071" autocomplete="postal-code">
+                   pattern="[0-9]{5}" placeholder="30047" autocomplete="postal-code">
             <button type="submit">Check</button>
           </form>
           <p class="zip-result" data-zip-result role="status"></p>
@@ -227,9 +228,9 @@
         </div>
         <div>
           <h2>A national brand standard, run by people who live here</h2>
-          <p>Jani-King has been building commercial cleaning systems for decades — training programs,
-            inspection procedures, safety protocols, and equipment standards that most independent
-            janitorial companies never develop.</p>
+          <p>Our national standard covers training programs, inspection procedures, safety
+            protocols, and equipment standards that most independent janitorial companies never
+            develop.</p>
           <p>TKB Ventures runs those systems in Greater Atlanta. Carolyn Ramsey and her team hire,
             train, schedule, and inspect locally, so the person accountable for your building is
             someone you can reach directly.</p>
@@ -249,7 +250,7 @@
           <h3>
             <button class="accordion__btn" type="button" id="home-faq-btn-1"
                     aria-expanded="false" aria-controls="home-faq-panel-1">
-              <span>Is TKB Ventures / Jani-King fully insured and bonded?</span>
+              <span>Is TKB Ventures fully insured and bonded?</span>
               <span class="accordion__icon" aria-hidden="true"></span>
             </button>
           </h3>
@@ -266,19 +267,19 @@
             </button>
           </h3>
           <div class="accordion__panel" id="home-faq-panel-2" role="region" aria-labelledby="home-faq-btn-2" data-open="false">
-            <div><p>Yes. We provide daily, weekly, bi-weekly, or customized after-hours cleaning built around how your building actually runs — including overnight, early-morning, and weekend windows.</p></div>
+            <div><p>Yes. We provide daily, weekly, bi-weekly, or customized after-hours cleaning built around how your building actually runs.</p></div>
           </div>
         </div>
         <div class="accordion__item">
           <h3>
             <button class="accordion__btn" type="button" id="home-faq-btn-3"
                     aria-expanded="false" aria-controls="home-faq-panel-3">
-              <span>Do you handle emergency or one-time deep cleanings?</span>
+              <span>How quickly can service start after a site walk-through?</span>
               <span class="accordion__icon" aria-hidden="true"></span>
             </button>
           </h3>
           <div class="accordion__panel" id="home-faq-panel-3" role="region" aria-labelledby="home-faq-btn-3" data-open="false">
-            <div><p>Yes. We offer rapid-response disinfection, post-construction cleanup, and event cleaning, whether or not you hold a recurring contract with us.</p></div>
+            <div><p>Service can typically begin within 24 to 48 hours of proposal approval and walk-through completion, depending on crew scheduling and the needs of the customer.</p></div>
           </div>
         </div>
         <div class="accordion__item">
@@ -290,7 +291,7 @@
             </button>
           </h3>
           <div class="accordion__panel" id="home-faq-panel-4" role="region" aria-labelledby="home-faq-btn-4" data-open="false">
-            <div><p>TKB Ventures performs routine, scheduled quality assurance inspections against the Jani-King standard. Findings go to your point of contact so nothing is corrected quietly or repeated.</p></div>
+            <div><p>We perform routine, scheduled quality assurance inspections periodically. If there is a problem, we report it to the point of contact or the office management.</p></div>
           </div>
         </div>
       </div>
@@ -300,11 +301,8 @@
         </div>
         <div>
           <h2>Quality control isn’t a promise, it’s a schedule</h2>
-          <p>Most cleaning contracts start well. What separates a good vendor from a bad one is what
-            the building looks like in month seven.</p>
-          <p>We inspect on a set schedule rather than when a complaint comes in. Inspections follow
-            the Jani-King standard, findings are written down, and your point of contact sees them.
-            When something slips, you hear about it from us first.</p>
+          <p>We perform routine, scheduled quality assurance inspections periodically. If there is
+            a problem, we report it to the point of contact or the office management.</p>
           <p>Crews are background-checked and badged, follow your access and key-control rules, and
             are trained before they’re assigned — not after.</p>
           <div class="btn-row" style="margin-top: var(--sp-5);">
@@ -346,8 +344,8 @@
             </span>
           </a>
           <address>
-            6190 Regency Parkway, Suite 300<br>
-            Norcross, GA 30071<br>
+            4045 Five Forks Trickum Road, Suite B9 #231<br>
+            Lilburn, GA 30047<br>
             <a href="tel:+17700000000">(770) 000-0000</a><br>
             <a href="mailto:info@tkbventures.com">info@tkbventures.com</a>
           </address>
@@ -367,8 +365,9 @@
 
         <div class="footer-col">
           <h3>About TKB Ventures</h3>
-          <p>TKB Ventures is an authorized Jani-King franchise operator delivering commercial
-            janitorial and facility maintenance across Greater Georgia.</p>
+          <p>As a Jani-King franchisee, TKB Ventures runs the training, inspection, and safety
+            programs of a national brand. As a locally owned business, the owner is in the same
+            metro area as your building.</p>
         </div>
 
         <div class="footer-col">
@@ -378,6 +377,7 @@
             <li><a href="services.html#commercial">Office cleaning</a></li>
             <li><a href="services.html#specialty">Disinfecting</a></li>
             <li><a href="services.html#specialty">Green cleaning</a></li>
+            <li><a href="services.html#specialty">Pressure washing</a></li>
             <li><a href="services.html#specialty">Specialty cleaning</a></li>
           </ul>
         </div>
@@ -394,17 +394,10 @@
         </div>
       </div>
 
-      <div class="pga-strip">
-        <span class="logo-plate">
-          <img src="assets/img/pga-of-america-logo.png" alt="PGA of America" width="200" height="60" loading="lazy">
-        </span>
-        <p>Official Cleaning Company of the PGA of America</p>
-      </div>
-
       <div class="footer-legal">
         <p>&copy; <span data-year>2026</span> TKB Ventures, LLC. Jani-King of Atlanta is independently
           owned and operated by TKB Ventures.</p>
-        <p>Jani-King&reg; and the PGA of America marks are the property of their respective owners.</p>
+        <p>Jani-King&reg; is the property of its respective owner.</p>
       </div>
     </div>
   </footer>
