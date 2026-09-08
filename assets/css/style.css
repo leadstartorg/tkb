@@ -187,7 +187,7 @@ li { margin-bottom: 0.35rem; }
   padding: 0.9rem 1.6rem 0.9rem 1.15rem;
   border-radius: var(--radius-pill);
   border: 1.5px solid transparent;
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: var(--step--1);
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -240,7 +240,7 @@ li { margin-bottom: 0.35rem; }
   background: rgba(255,255,255,0.1);
   border: 1px solid var(--border-on-ink);
   color: #fff;
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: var(--step--2);
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -299,12 +299,12 @@ li { margin-bottom: 0.35rem; }
   color: #fff;
 }
 .brand__logo {
-  height: 40px;
-  width: auto;
+  width: 200px;
+  height: auto;
   flex: none;
 }
 .brand__sub {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 0.625rem;
   font-weight: 400;
   letter-spacing: 0.13em;
@@ -318,15 +318,13 @@ li { margin-bottom: 0.35rem; }
 
 /* Footer has a full column, so it stacks. */
 .footer-brand { flex-direction: column; align-items: flex-start; gap: 0.55rem; }
-.footer-brand .brand__logo { height: 46px; }
-.footer-brand .brand__sub { padding-left: 0; border-left: 0; }
+.footer-brand .brand__logo { width: 200px; height: auto; }
 
 @media (max-width: 900px) {
-  .brand__logo { height: 34px; }
+  .brand__logo { width: 180px; }
 }
 @media (max-width: 620px) {
-  .brand__logo { height: 30px; }
-  .site-header .brand__sub { display: none; }
+  .brand__logo { width: 150px; }
 }
 
 .nav { display: flex; align-items: center; gap: var(--sp-5); }
@@ -366,10 +364,6 @@ li { margin-bottom: 0.35rem; }
 .nav-toggle[aria-expanded="true"] .nav-toggle__close { display: block; }
 
 @media (max-width: 900px) {
-  /* Both header variants pin on mobile — otherwise the menu button scrolls
-     out of reach on the homepage, where the header is absolute. */
-  /* No backdrop-filter here: it would make the header the containing block
-     for the fixed nav drawer and clip it to the header box. */
   .site-header,
   .site-header--solid {
     position: fixed;
@@ -496,7 +490,7 @@ li { margin-bottom: 0.35rem; }
   border-radius: var(--radius);
   color: #fff;
   padding: 0.7rem 0.9rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: var(--step--1);
   letter-spacing: 0.04em;
   text-decoration: none;
@@ -533,12 +527,12 @@ li { margin-bottom: 0.35rem; }
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(100deg, rgba(11,54,94,0.92) 0%, rgba(14,62,105,0.62) 40%, rgba(28,105,179,0.05) 74%);
+  background: #0a1b33;
 }
 .page-hero h1 { color: #fff; font-size: var(--step-3); max-width: 20ch; }
 .page-hero p { color: var(--text-on-ink); font-size: var(--step-1); max-width: 58ch; }
 .breadcrumb {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: var(--step--2);
   letter-spacing: 0.1em;
   text-transform: uppercase;
