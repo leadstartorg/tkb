@@ -168,6 +168,7 @@ li { margin-bottom: 0.35rem; }
 .section--tint .rule { background: var(--primary-tint); }
 
 .section-head { max-width: 62ch; margin-bottom: var(--sp-6); }
+@media all and (max-width:900px) { max-width: none !important; }
 .section-head p { color: var(--text-muted); font-size: var(--step-1); }
 .section--ink .section-head p { color: var(--text-on-ink); }
 
