@@ -4,7 +4,9 @@ Commercial janitorial site for TKB Ventures, LLC (Carolyn Ramsey), an
 independently owned Jani-King franchisee at 4045 Five Forks Trickum Road,
 Suite B9 #231, Lilburn, GA 30047. Phone (678) 600-0329.
 
-**Revision 2** applied Carolyn's change list: relocated to Lilburn, PGA of
+See `CHANGELOG.md` for the full per-page history of every revision round.
+
+**Revision 2** applied Carolyn's first change list: relocated to Lilburn, PGA of
 America removed, coverage narrowed to metro Atlanta, industrial/manufacturing
 dropped, pressure washing added, team grid replaced with the owner bio.
 
@@ -18,8 +20,8 @@ directly or drop the folder on any host.
 ```
 index.html            Home
 about.html            Brand story, 5-step onboarding, owner bio
+coverage-areas.html   Map, city directory, ZIP lookup (was service-areas.html)
 services.html         6 commercial areas + specialty/residential
-service-areas.html    Map, city directory, ZIP lookup
 faq.html              10 questions, two-column accordion
 contact.html          Contact details + tabbed quote/RFP forms
 careers.html          Stub
@@ -55,9 +57,8 @@ The same list is in an HTML comment at the top of every page.
 | 2 | Social URLs set to `#` | footer |
 | 3 | Form endpoints | add `data-endpoint="…"` to each `<form>` |
 | 4 | ZIP coverage list | `main.js` → `SERVICE_PREFIXES` |
-| 5 | Hero image (AI approved) | `.hero { --hero-photo: url("assets/img/…"); }` |
-| 6 | Operations image (AI approved) | `about.html`, first section |
-| 7 | Privacy and terms copy | `privacy.html`, `terms.html` — needs counsel |
+| 5 | Hero background image (optional) | `.hero { --hero-photo: url("assets/img/…"); }` |
+| 6 | Privacy and terms copy | `privacy.html`, `terms.html` — needs counsel |
 
 ### Images
 
@@ -66,9 +67,20 @@ The owner headshot is in place: `assets/img/carolyn-ramsey.jpg`. The supplied
 `carolyn.png` was 704x1477 with transparent letterbox bands top and bottom; it
 was flattened onto white, cropped to the 701x876 photo region at 4:5, and
 resized to 800x1000 (154 KB).
-Two slots remain stubbed as labelled placeholder boxes — the hero background
-and the About operations image — each with the exact `<img>` tag to paste in an
-HTML comment directly above it.
+The operations photo is in place at `assets/img/operations.jpg`, cropped to
+16:9 from the supplied 1376x768 original — the frame was set to suit the image
+rather than cropping a wide corridor shot down to 4:3.
+
+The supplied logo (`TKB-Ventures-Logo_jpeg.png`) had **no transparency at all** —
+every pixel was opaque and the transparency checkerboard was baked in as dark
+grey. It was keyed out by luminance with the threshold set above the light
+checker squares, trimmed, and written to `assets/img/tkb-ventures-logo.png` at
+800x194 with real alpha. The art is white, so it only works on dark
+backgrounds; both the header and footer qualify. **Ask Carolyn for the original
+vector or a true-transparency export before launch** — a keyed raster is a
+workaround, not a proper brand asset.
+
+Only the hero background image remains optional and unstubbed.
 
 ### Forms
 
@@ -127,19 +139,28 @@ Defined in `:root` at the top of `style.css`. Names deliberately match
 
 | Token | Value | Use |
 |-------|-------|-----|
-| `--ink` | `#0a1b33` | hero, CTA bands, footer |
+| `--primary` | `#1c69b3` | **PRIMARY** — heroes, header, buttons, links, chips |
+| `--primary-hover` | `#15507f` | button hover, mobile drawer |
+| `--primary-deep` | `#10416b` | gradient depth beneath the hero |
+| `--primary-soft` | `#e9f1fa` | light tint bands and chips |
+| `--primary-tint` | `#d3e4f6` | tint borders |
+| `--ink` | `#0a1b33` | headings, RFP + CTA bands, dark cards, table headers |
 | `--ink-2` | `#102844` | footer surface |
-| `--accent` | `#1667cf` | buttons, links, RFP band |
-| `--accent-soft` | `#e8f0fb` | tinted chips |
-| `--ice` | `#a8c9f0` | light blue on navy, floor-plan lines |
+| `--ice` | `#dfeefc` | light blue text and rules on blue |
 | `--bg-alt` | `#f2f5f9` | alternating sections |
 | `--text` | `#46505e` | body |
 | `--text-muted` | `#626c7a` | secondary body |
 | `--heading` | `#0a1b33` | headings |
 
-Type: **Archivo** (display and body), **IBM Plex Mono** (button labels, chips,
-table headers, eyebrows only). Both loaded from Google Fonts. Self-host them
-before launch if you want to avoid the third-party request.
+`--accent`, `--accent-hover` and `--accent-soft` remain as aliases of the
+primary tokens, so the mapping into the boilerplate's `theme.json` stays 1:1.
+
+Type: **Lora** (display and body — the primary face), **IBM Plex Mono** (button
+labels, chips, breadcrumbs, table headers only). Both loaded from Google Fonts.
+Self-host them before launch if you want to avoid the third-party request.
+
+Heading tracking is deliberately loose (`-0.015em` on `h1`) and body leading is
+1.72 — a serif does not want the tight negative tracking a grotesque can carry.
 
 Radius varies by hierarchy on purpose: `8px` inputs, `18px` cards, pill
 buttons. Don't collapse these to one value.
@@ -155,9 +176,12 @@ line, and a trailing empty cell stays white — so the card count can change
 
 Checked and passing:
 
-- All colour pairings at WCAG AA. `--text-muted` was darkened from `#6e7a8a`
-  (3.99:1 on `--bg-alt`) to `#626c7a` (4.87:1).
-- Visible focus ring — 3px amber, high contrast on both navy and white.
+- All colour pairings at WCAG AA, rechecked after the primary-colour change.
+  `--text-muted` was darkened from `#6e7a8a` (3.99:1 on `--bg-alt`) to `#626c7a`
+  (4.87:1). `--text-on-ink` was raised from 78% to 90% white and `--ice` from
+  `#a8c9f0` to `#dfeefc`, both of which fell below 4.5:1 on the new primary.
+- Two-tone focus ring — white inner, navy outer. No single colour clears 3:1
+  on both white and the mid-blue primary, so the ring carries its own contrast.
 - One `h1` per page; `aria-controls` targets all resolve; no duplicate IDs;
   every form control has a label; every image has alt text.
 - Accordions use real buttons with `aria-expanded`; tabs implement arrow-key

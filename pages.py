@@ -69,7 +69,7 @@ ZIP_CARD_DARK = """        <div class="scope-card scope-card--tool">
             <button type="submit">Check</button>
           </form>
           <p class="zip-result" data-zip-result role="status"></p>
-          <a class="link-plain" href="service-areas.html">See the coverage map</a>
+          <a class="link-plain" href="coverage-areas.html">See the coverage map</a>
         </div>"""
 
 
@@ -361,20 +361,14 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
     <div class="wrap">
       <div class="split split--media">
         <div>
-          <!-- TODO: drop in the operations image (AI-generated is approved, provided it
-               reads as a real facility). Replace this whole div with:
-               <img src="assets/img/operations.jpg" alt="..." width="960" height="720"> -->
-          <div class="person__photo" style="aspect-ratio: 4 / 3;">
-            <span style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em;">
-              OPERATIONS PHOTO
-            </span>
-          </div>
+          <img class="ops-photo" src="assets/img/operations.jpg"
+               alt="Two TKB Ventures crew members reviewing a checklist while mopping an office corridor"
+               width="1280" height="720" loading="lazy" decoding="async">
         </div>
         <div>
           <h2>Why TKB Ventures exists</h2>
-          <p>As a Jani-King franchisee, TKB Ventures runs the training, inspection, and safety
-            programs of a national brand. As a locally owned business, the owner is in the same
-            metro area as your building.</p>
+          <p>TKB Ventures runs the training, inspection, and safety programs of national brands.
+            As a locally owned business, our leadership operates right here in your metro area.</p>
           <p>We serve office buildings, medical practices, schools and childcare centers, retail
             centers, and event venues across the Atlanta metro.</p>
         </div>
@@ -468,8 +462,8 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
 
     services = page_hero(
         "Commercial cleaning, floor care, and specialty work",
-        "Five core commercial service areas, plus periodic and one-time work that runs alongside "
-        "your nightly janitorial contract.", "Services") + f"""
+        "We list our five core commercial service areas, plus specialty, periodic, and "
+        "residential services.", "Services") + f"""
 
   <section class="section" id="commercial">
     <div class="wrap">
@@ -482,7 +476,7 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
     </div>
   </section>
 
-  <section class="section section--ink" id="specialty">
+  <section class="section section--tint" id="specialty">
     <div class="wrap">
       <div class="split">
         <div>
@@ -493,11 +487,11 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
           <p>Available whether or not you hold a recurring contract with us. We are also
             available for one-time services if needed.</p>
           <div class="btn-row" style="margin-top: var(--sp-5);">
-            <a class="btn btn--light" href="#" data-open-modal="modal-walkthrough">Get it quoted</a>
+            <a class="btn btn--primary" href="#" data-open-modal="modal-walkthrough">Get it quoted</a>
           </div>
         </div>
         <div>
-          <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem;">
+          <ul class="spec-list">
 {specialty_items}
           </ul>
         </div>
@@ -524,8 +518,8 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
 
     areas = page_hero(
         "Where we run routes",
-        "Our office is in Lilburn, Georgia. We service commercial facilities across the "
-        "Atlanta metro.", "Service areas") + f"""
+        "Our office is in Lilburn, Georgia, but we service commercial facilities across the "
+        "Atlanta metro.", "Coverage areas") + f"""
 
   <section class="section">
     <div class="wrap">
@@ -588,11 +582,11 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
 
 {CTA_BAND}"""
 
-    render("service-areas.html",
-           "Service Areas | TKB Ventures — Commercial Cleaning near Lilburn, GA",
+    render("coverage-areas.html",
+           "Coverage Areas | TKB Ventures — Commercial Cleaning near Lilburn, GA",
            "TKB Ventures services commercial facilities across the Atlanta metro from its "
            "office in Lilburn, Georgia.",
-           areas, "service-areas.html")
+           areas, "coverage-areas.html")
 
     # -------------------------------------------------------------- FAQ
     left = accordion(FAQ_ALL[:5], "faq-left")
@@ -600,8 +594,8 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
 
     faq = page_hero(
         "Frequently asked questions",
-        "Insurance, scheduling, quality control, and how the Jani-King franchise relationship "
-        "actually works.", "FAQ") + f"""
+        "Learn more about insurance, scheduling, quality control, and how TKB Ventures "
+        "works.", "FAQ") + f"""
 
   <section class="section">
     <div class="wrap">

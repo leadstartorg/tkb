@@ -10,16 +10,25 @@
    1. Tokens
    -------------------------------------------------------------------------- */
 :root {
-  /* Brand — navy / blue / gray. No green anywhere. */
-  --ink:            #0a1b33;
-  --ink-2:          #102844;
+  /* ---- PRIMARY brand colour ---- */
+  --primary:        #1c69b3;   /* heroes, header, buttons, links, chips */
+  --primary-hover:  #15507f;
+  --primary-deep:   #10416b;   /* gradient depth beneath the hero */
+  --primary-soft:   #e9f1fa;   /* light tint panels and chips */
+  --primary-tint:   #d3e4f6;   /* tint borders */
+
+  /* ---- Deep navy: retained in the scheme, no longer primary ---- */
+  --ink:            #0a1b33;   /* headings, RFP + CTA bands, dark cards */
+  --ink-2:          #102844;   /* footer surface */
   --ink-3:          #17395e;
 
-  --accent:         #1667cf;
-  --accent-hover:   #0e4fa6;
-  --accent-soft:    #e8f0fb;
+  /* Boilerplate-compatible aliases so theme.json mapping stays 1:1 */
+  --accent:         var(--primary);
+  --accent-hover:   var(--primary-hover);
+  --accent-soft:    var(--primary-soft);
   --accent-on:      #ffffff;
-  --ice:            #a8c9f0;   /* light blue, for text on navy */
+
+  --ice:            #dfeefc;   /* light blue for text and rules on blue (AA on --primary) */
 
   --bg:             #ffffff;
   --bg-alt:         #f2f5f9;
@@ -29,14 +38,17 @@
 
   --text:           #46505e;
   --text-muted:     #626c7a;
-  --text-on-ink:    rgba(255, 255, 255, 0.78);
+  --text-on-ink:    rgba(255, 255, 255, 0.9);  /* 0.78 fails AA on --primary */
   --heading:        #0a1b33;
 
-  --focus:          #ffb703;   /* focus ring only — high contrast on navy + white */
+  /* Focus ring is two-tone: no single colour clears 3:1 on both white and
+     mid-blue, so a white inner ring pairs with a navy outer ring. */
+  --focus:          #ffffff;
+  --focus-outer:    #0a1b33;
 
   /* Type */
-  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --font-body:    "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Lora", Georgia, "Times New Roman", serif;
+  --font-body:    "Lora", Georgia, "Times New Roman", serif;
   --font-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
   --step--2: 0.75rem;
@@ -82,7 +94,7 @@ body {
   font-family: var(--font-body);
   font-size: var(--step-0);
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.72;   /* serif body wants a little more leading */
   -webkit-font-smoothing: antialiased;
 }
 
@@ -92,16 +104,16 @@ img { height: auto; }
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   color: var(--heading);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  line-height: 1.16;
+  letter-spacing: -0.005em;
   margin: 0 0 var(--sp-4);
   text-wrap: balance;
 }
 
-h1 { font-size: var(--step-4); font-weight: 700; letter-spacing: -0.035em; }
+h1 { font-size: var(--step-4); font-weight: 700; line-height: 1.08; letter-spacing: -0.015em; }
 h2 { font-size: var(--step-3); font-weight: 700; }
-h3 { font-size: var(--step-2); font-weight: 650; letter-spacing: -0.015em; }
-h4 { font-size: var(--step-1); font-weight: 650; letter-spacing: -0.01em; }
+h3 { font-size: var(--step-2); font-weight: 600; }
+h4 { font-size: var(--step-1); font-weight: 600; }
 
 p  { margin: 0 0 var(--sp-4); max-width: 68ch; }
 p:last-child { margin-bottom: 0; }
@@ -114,7 +126,8 @@ li { margin-bottom: 0.35rem; }
 
 :focus-visible {
   outline: 3px solid var(--focus);
-  outline-offset: 2px;
+  outline-offset: 0;
+  box-shadow: 0 0 0 6px var(--focus-outer);
   border-radius: 3px;
 }
 
@@ -148,6 +161,11 @@ li { margin-bottom: 0.35rem; }
 .section--ink h2,
 .section--ink h3,
 .section--ink h4 { color: #fff; }
+
+/* Light blue band — used where a dark band would sit next to another dark
+   band and lose its edge. */
+.section--tint { background: var(--primary-soft); }
+.section--tint .rule { background: var(--primary-tint); }
 
 .section-head { max-width: 62ch; margin-bottom: var(--sp-6); }
 .section-head p { color: var(--text-muted); font-size: var(--step-1); }
@@ -260,7 +278,7 @@ li { margin-bottom: 0.35rem; }
 .site-header--solid {
   position: sticky;
   top: 0;
-  background: var(--ink);
+  background: var(--primary);
   padding-block: var(--sp-4);
 }
 
@@ -271,29 +289,44 @@ li { margin-bottom: 0.35rem; }
   gap: var(--sp-5);
 }
 
+/* Horizontal lockup: the supplied logo is a wide 4.1:1 wordmark, so stacking
+   a descriptor under it forced the logo small and the header tall. */
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 0.85rem;
   text-decoration: none;
   color: #fff;
 }
-.brand__mark { flex: none; }
-.brand__name {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.2rem;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
+.brand__logo {
+  height: 40px;
+  width: auto;
+  flex: none;
 }
 .brand__sub {
-  display: block;
   font-family: var(--font-mono);
   font-size: 0.625rem;
   font-weight: 400;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--ice);
+  padding-left: 0.85rem;
+  border-left: 1px solid var(--border-on-ink);
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+/* Footer has a full column, so it stacks. */
+.footer-brand { flex-direction: column; align-items: flex-start; gap: 0.55rem; }
+.footer-brand .brand__logo { height: 46px; }
+.footer-brand .brand__sub { padding-left: 0; border-left: 0; }
+
+@media (max-width: 900px) {
+  .brand__logo { height: 34px; }
+}
+@media (max-width: 620px) {
+  .brand__logo { height: 30px; }
+  .site-header .brand__sub { display: none; }
 }
 
 .nav { display: flex; align-items: center; gap: var(--sp-5); }
@@ -341,7 +374,7 @@ li { margin-bottom: 0.35rem; }
   .site-header--solid {
     position: fixed;
     top: 0;
-    background: var(--ink);
+    background: var(--primary);
     padding-block: var(--sp-4);
   }
   .nav-toggle { display: inline-flex; }
@@ -350,7 +383,7 @@ li { margin-bottom: 0.35rem; }
     z-index: 2;
     inset: 0 0 0 auto;
     width: min(320px, 86vw);
-    background: var(--ink-2);
+    background: var(--primary-hover);
     flex-direction: column;
     align-items: stretch;
     gap: 0;
@@ -381,7 +414,7 @@ li { margin-bottom: 0.35rem; }
    -------------------------------------------------------------------------- */
 .hero {
   position: relative;
-  background: var(--ink);
+  background: var(--primary);
   color: #fff;
   overflow: hidden;
   padding-top: 9.5rem;
@@ -409,8 +442,8 @@ li { margin-bottom: 0.35rem; }
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(100deg, rgba(10,27,51,0.94) 0%, rgba(10,27,51,0.72) 38%, rgba(10,27,51,0) 66%),
-    linear-gradient(180deg, rgba(10,27,51,0.1) 0%, rgba(10,27,51,0.45) 58%, var(--ink) 100%);
+    linear-gradient(100deg, rgba(11,54,94,0.92) 0%, rgba(14,62,105,0.6) 38%, rgba(28,105,179,0) 66%),
+    linear-gradient(180deg, rgba(28,105,179,0) 0%, rgba(16,65,107,0.5) 60%, var(--primary-deep) 100%);
 }
 
 .hero__grid {
@@ -437,7 +470,7 @@ li { margin-bottom: 0.35rem; }
 
 /* Floating enquiry card, per the reference layout */
 .hero-card {
-  background: rgba(23, 57, 94, 0.72);
+  background: rgba(9, 40, 71, 0.55);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--border-on-ink);
@@ -486,7 +519,7 @@ li { margin-bottom: 0.35rem; }
 
 /* Compact hero for interior pages */
 .page-hero {
-  background: var(--ink);
+  background: var(--primary);
   color: #fff;
   position: relative;
   overflow: hidden;
@@ -500,7 +533,7 @@ li { margin-bottom: 0.35rem; }
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(100deg, rgba(10,27,51,0.95) 0%, rgba(10,27,51,0.74) 40%, rgba(10,27,51,0.15) 74%);
+  background: linear-gradient(100deg, rgba(11,54,94,0.92) 0%, rgba(14,62,105,0.62) 40%, rgba(28,105,179,0.05) 74%);
 }
 .page-hero h1 { color: #fff; font-size: var(--step-3); max-width: 20ch; }
 .page-hero p { color: var(--text-on-ink); font-size: var(--step-1); max-width: 58ch; }
@@ -526,7 +559,7 @@ li { margin-bottom: 0.35rem; }
    8. RFP band
    -------------------------------------------------------------------------- */
 .rfp {
-  background: var(--accent);
+  background: var(--ink);
   color: #fff;
 }
 .rfp__inner {
@@ -676,7 +709,6 @@ li { margin-bottom: 0.35rem; }
   font-family: var(--font-display);
   font-size: 1.0625rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
   color: var(--heading);
   cursor: pointer;
   line-height: 1.35;
@@ -815,6 +847,36 @@ li { margin-bottom: 0.35rem; }
   gap: var(--sp-7);
   align-items: start;
 }
+.ops-photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+.spec-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+.spec-list li {
+  margin: 0;
+  position: relative;
+  padding: 0.7rem 1rem 0.7rem 2.1rem;
+  background: #fff;
+  border: 1px solid var(--primary-tint);
+  border-radius: var(--radius);
+  font-size: 0.9375rem;
+}
+.spec-list li::before {
+  content: "";
+  position: absolute;
+  left: 0.95rem;
+  top: 1.2rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
 .owner__photo {
   width: 100%;
   height: auto;

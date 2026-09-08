@@ -40,16 +40,13 @@ TODO = """<!--
 
 # --- shared bits -----------------------------------------------------------
 
-BRAND_MARK = """<svg class="brand__mark" width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
-        <rect x="0.9" y="0.9" width="32.2" height="32.2" rx="8.5" stroke="currentColor" stroke-width="1.8" opacity=".55"/>
-        <path d="M8 22.5C11.6 13.8 17.4 9.5 26 9.5" stroke="#a8c9f0" stroke-width="2.4" stroke-linecap="round"/>
-        <path d="M8 26C12.8 19.4 18.4 16 26 16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity=".6"/>
-      </svg>"""
+LOGO = """<img class="brand__logo" src="assets/img/tkb-ventures-logo.png"
+             alt="TKB Ventures" width="800" height="194">"""
 
 # Facility floor-plan schematic behind the navy heroes. The thing we sell is
 # the site walk-through, so the hero shows a plan rather than a stock photo.
 PLAN_SVG = """<svg class="{cls}" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-      <g stroke="#a8c9f0" fill="none" stroke-linecap="square">
+      <g stroke="#ffffff" fill="none" stroke-linecap="square">
         <!-- building envelope -->
         <rect x="60" y="90" width="1320" height="440" stroke-width="3" opacity=".5"/>
         <!-- corridor -->
@@ -77,16 +74,17 @@ PLAN_SVG = """<svg class="{cls}" viewBox="0 0 1440 620" preserveAspectRatio="xMi
           <path d="M60 52h1320M60 40v24M1380 40v24M700 40v24"/>
         </g>
       </g>
-      <g fill="#a8c9f0" opacity=".38">
+      <g fill="#ffffff" opacity=".38">
         <circle cx="60" cy="90" r="4"/><circle cx="1380" cy="90" r="4"/>
         <circle cx="60" cy="530" r="4"/><circle cx="1380" cy="530" r="4"/>
       </g>
     </svg>"""
 
 NAV_ITEMS = [
+    ("index.html", "Home"),
     ("about.html", "About"),
     ("services.html", "Services"),
-    ("service-areas.html", "Service areas"),
+    ("coverage-areas.html", "Coverage Areas"),
     ("faq.html", "FAQ"),
     ("contact.html", "Contact"),
 ]
@@ -105,11 +103,9 @@ def header(current: str, solid: bool) -> str:
 
   <header class="{cls}">
     <div class="wrap wrap--wide header-inner">
-      <a class="brand" href="index.html">
-        {BRAND_MARK}
-        <span class="brand__name">TKB Ventures
-          <span class="brand__sub">Jani-King of Atlanta</span>
-        </span>
+      <a class="brand" href="index.html" aria-label="TKB Ventures — home">
+        {LOGO}
+        <span class="brand__sub">Jani-King of Atlanta</span>
       </a>
 
       <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
@@ -164,11 +160,9 @@ FOOTER = f"""  <footer class="site-footer">
       <div class="footer-grid">
 
         <div class="footer-col">
-          <a class="brand footer-brand" href="index.html">
-            {BRAND_MARK}
-            <span class="brand__name">TKB Ventures
-              <span class="brand__sub">Jani-King of Atlanta</span>
-            </span>
+          <a class="brand footer-brand" href="index.html" aria-label="TKB Ventures — home">
+            {LOGO}
+            <span class="brand__sub">Jani-King of Atlanta</span>
           </a>
           <address>
             {ADDRESS_1}<br>
@@ -192,9 +186,8 @@ FOOTER = f"""  <footer class="site-footer">
 
         <div class="footer-col">
           <h3>About TKB Ventures</h3>
-          <p>As a Jani-King franchisee, TKB Ventures runs the training, inspection, and safety
-            programs of a national brand. As a locally owned business, the owner is in the same
-            metro area as your building.</p>
+          <p>TKB Ventures runs the training, inspection, and safety programs of national brands.
+            As a locally owned business, our leadership operates right here in your metro area.</p>
         </div>
 
         <div class="footer-col">
@@ -213,7 +206,7 @@ FOOTER = f"""  <footer class="site-footer">
           <h3>Company</h3>
           <ul>
             <li><a href="about.html">About us</a></li>
-            <li><a href="service-areas.html">Service areas</a></li>
+            <li><a href="coverage-areas.html">Coverage areas</a></li>
             <li><a href="careers.html">Careers</a></li>
             <li><a href="terms.html">Terms of service</a></li>
             <li><a href="privacy.html">Privacy policy</a></li>
@@ -344,7 +337,7 @@ HEAD = """<!doctype html>
   <meta name="description" content="{desc}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
