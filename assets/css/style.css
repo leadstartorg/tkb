@@ -1174,7 +1174,7 @@ dialog.modal::backdrop { background: rgba(6, 16, 31, 0.62); }
   font-size: 0.8125rem;
   color: rgba(255,255,255,0.6);
 }
-.footer-legal p { margin: 0; max-width: 70ch; font-size: inherit; color: inherit; }
+.footer-legal p { margin: 0; max-width: 100vw; font-size: inherit; color: inherit; }
 
 /* --------------------------------------------------------------------------
    22. Hero entrance — one orchestrated sequence, nothing else animates on load
