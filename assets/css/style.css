@@ -522,6 +522,13 @@ li { margin-bottom: 0.35rem; }
   padding-bottom: var(--sp-7);
   isolation: isolate;
 }
+
+@media all and (max-width: 900px) {
+   .page-hero {
+      padding-top: 9rem !important;
+   }
+}
+
 .page-hero__plan { position: absolute; inset: 0; z-index: -2; opacity: 0.85; }
 .page-hero::after {
   content: "";
