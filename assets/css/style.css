@@ -1152,7 +1152,7 @@ dialog.modal::backdrop { background: rgba(6, 16, 31, 0.62); }
   max-width: 30ch;
   letter-spacing: -0.01em;
 }
-
+/*
 .footer-legal {
   margin-top: var(--sp-5);
   padding-top: var(--sp-5);
@@ -1161,6 +1161,16 @@ dialog.modal::backdrop { background: rgba(6, 16, 31, 0.62); }
   justify-content: space-between;
   gap: var(--sp-4);
   flex-wrap: wrap;
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.6);
+}
+*/
+
+.footer-legal {
+  margin-top: var(--sp-5);
+  padding-top: var(--sp-5);
+  border-top: 1px solid var(--border-on-ink);
+  text-align: center;
   font-size: 0.8125rem;
   color: rgba(255,255,255,0.6);
 }
