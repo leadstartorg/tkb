@@ -14,8 +14,8 @@ import pathlib
 
 ROOT = pathlib.Path(__file__).parent
 
-PHONE_DISPLAY = "(770) 000-0000"      # PLACEHOLDER
-PHONE_HREF = "+17700000000"           # PLACEHOLDER
+PHONE_DISPLAY = "(678) 600-0329"
+PHONE_HREF = "+16786000329"
 EMAIL = "info@tkbventures.com"        # PLACEHOLDER
 ADDRESS_1 = "4045 Five Forks Trickum Road, Suite B9 #231"
 ADDRESS_2 = "Lilburn, GA 30047"
@@ -24,16 +24,15 @@ TODO = """<!--
   ============================================================
   PLACEHOLDERS TO REPLACE BEFORE LAUNCH
   ------------------------------------------------------------
-  1. Phone: (770) 000-0000  -> real line (search all files)
-  2. Email: info@tkbventures.com -> real inbox
-  3. Social URLs in the footer are set to "#"
-  4. Form endpoints: set data-endpoint on each <form>
-  5. ZIP coverage list: assets/js/main.js -> SERVICE_PREFIXES
-  6. IMAGES (AI-generated approved by client):
+  1. Email: info@tkbventures.com -> real inbox
+  2. Social URLs in the footer are set to "#"
+  3. Form endpoints: set data-endpoint on each <form>
+  4. ZIP coverage list: assets/js/main.js -> SERVICE_PREFIXES
+  5. IMAGES (AI-generated approved by client):
      - hero: .hero { --hero-photo: url("assets/img/hero.jpg"); }
      - About operations photo
      (owner headshot is done)
-  7. Service + FAQ copy is drafted from the project brief, not
+  6. Service + FAQ copy is drafted from the project brief, not
      pulled from janiking.com. Have Jani-King approve wording
      and confirm logo usage rights.
   ============================================================
@@ -365,7 +364,7 @@ CONTRACTIONS = [
     "isn't", "don't", "doesn't", "won't", "can't", "didn't", "aren't", "hasn't",
     "wasn't", "we'll", "you'll", "they'll", "it's", "It's", "That's", "that's",
     "they're", "you're", "we're", "we've", "you've", "there's", "what's",
-    "here's", "let's", "Ventures'", "Golfers'", "who's",
+    "here's", "let's", "Ventures'", "Golfers'", "who's", "she's", "he's",
 ]
 
 

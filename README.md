@@ -2,7 +2,7 @@
 
 Commercial janitorial site for TKB Ventures, LLC (Carolyn Ramsey), an
 independently owned Jani-King franchisee at 4045 Five Forks Trickum Road,
-Suite B9 #231, Lilburn, GA 30047.
+Suite B9 #231, Lilburn, GA 30047. Phone (678) 600-0329.
 
 **Revision 2** applied Carolyn's change list: relocated to Lilburn, PGA of
 America removed, coverage narrowed to metro Atlanta, industrial/manufacturing
@@ -51,20 +51,21 @@ The same list is in an HTML comment at the top of every page.
 
 | # | What | Where |
 |---|------|-------|
-| 1 | Phone `(770) 000-0000` | all pages, `build.py` `PHONE_DISPLAY` / `PHONE_HREF`, `main.js` fail message |
-| 2 | Email `info@tkbventures.com` | all pages, `build.py` `EMAIL` |
-| 3 | Social URLs set to `#` | footer |
-| 4 | Form endpoints | add `data-endpoint="…"` to each `<form>` |
-| 5 | ZIP coverage list | `main.js` → `SERVICE_PREFIXES` |
-| 6 | Hero image (AI approved) | `.hero { --hero-photo: url("assets/img/…"); }` |
-| 7 | Operations image (AI approved) | `about.html`, first section |
-| 8 | Privacy and terms copy | `privacy.html`, `terms.html` — needs counsel |
+| 1 | Email `info@tkbventures.com` | all pages, `build.py` `EMAIL` |
+| 2 | Social URLs set to `#` | footer |
+| 3 | Form endpoints | add `data-endpoint="…"` to each `<form>` |
+| 4 | ZIP coverage list | `main.js` → `SERVICE_PREFIXES` |
+| 5 | Hero image (AI approved) | `.hero { --hero-photo: url("assets/img/…"); }` |
+| 6 | Operations image (AI approved) | `about.html`, first section |
+| 7 | Privacy and terms copy | `privacy.html`, `terms.html` — needs counsel |
 
 ### Images
 
 Carolyn approved AI-generated imagery provided it reads as real photography.
-The owner headshot is in place: `assets/img/carolyn-ramsey.jpg`, cropped to
-4:5 from the supplied 976x2048 original and resized to 800x1000 (147 KB).
+The owner headshot is in place: `assets/img/carolyn-ramsey.jpg`. The supplied
+`carolyn.png` was 704x1477 with transparent letterbox bands top and bottom; it
+was flattened onto white, cropped to the 701x876 photo region at 4:5, and
+resized to 800x1000 (154 KB).
 Two slots remain stubbed as labelled placeholder boxes — the hero background
 and the About operations image — each with the exact `<img>` tag to paste in an
 HTML comment directly above it.

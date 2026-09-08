@@ -245,7 +245,7 @@
         if (status) {
           status.setAttribute("data-state", "fail");
           status.innerHTML =
-            'That didn\'t send. Call <a href="tel:+17700000000">(770) 000-0000</a> or ' +
+            'That didn\'t send. Call <a href="tel:+16786000329">(678) 600-0329</a> or ' +
             'email <a href="mailto:info@tkbventures.com">info@tkbventures.com</a> and we\'ll pick it up from there.';
         }
       }

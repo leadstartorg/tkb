@@ -438,16 +438,18 @@ def build(render, page_hero, CTA_BAND, PLAN_SVG, PHONE, PHONE_HREF, EMAIL, ADDR1
           <img class="owner__photo" src="assets/img/carolyn-ramsey.jpg"
                alt="Carolyn Ramsey, owner of TKB Ventures, LLC"
                width="800" height="1000" loading="lazy" decoding="async">
+          <p class="owner__caption">Carolyn Ramsey &mdash; Owner, TKB Ventures, LLC</p>
         </div>
         <div class="owner__body">
-          <h2>Meet the owner</h2>
-          <p class="person__role">Carolyn Ramsey &mdash; Owner, TKB Ventures, LLC</p>
-          <p>The business started in 1990 in Charleston, South Carolina. We came to Atlanta in
-            1998, and we have been in business here in Atlanta since 2010. The business we built
-            is highly recommended by national brands, and we are now expanding to residential
-            services.</p>
-          <p>She lives in Lilburn with her family &mdash; two daughters, one son, a grandson, and a
-            dog named Cody.</p>
+          <h2>Our story</h2>
+          <p>Our company, TKB Ventures, was founded in Charleston, South Carolina, in 1990 but has
+            been serving the Atlanta, Georgia region since 1998 and officially established local
+            business operations here in 2010. We are built on decades of quality work and trusted
+            by major national brands, and are now bringing our commercial-grade expertise directly
+            to local homeowners through our expanding residential services this year.</p>
+          <p>Behind the business is a dedicated leader, Carolyn Ramsey, who proudly calls Georgia
+            home. When she's not running daily operations, she enjoys spending quality time with
+            her family&mdash;her two daughters, son, grandson, and their dog, Cody.</p>
         </div>
       </div>
     </div>
